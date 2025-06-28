@@ -540,6 +540,14 @@
       "file": "resources/images/ui/buttons/play_selected.png"
     },
     {
+      "id": "enter_endless_game",
+      "file": "resources/images/ui/buttons/play_endless.png"
+    },
+    {
+      "id": "enter_endless_game_selected",
+      "file": "resources/images/ui/buttons/play_endless_selected.png"
+    },
+    {
       "id": "controls_button",
       "file": "resources/images/ui/buttons/controls.png"
     },

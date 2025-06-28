@@ -36,6 +36,12 @@ void MainMenuScene::initScene()
     startB.sprite_key = "enter_game";
     create_start_button(startB);
 
+    // Button start
+    buttonPropTemplate.rect.position.y += 0.18f;
+    GameStructs::ButtonProperties startEndless = buttonPropTemplate;
+    startEndless.sprite_key = "enter_endless_game";
+    create_start_endless_button(startEndless);
+
     // Button multiplauer
     buttonPropTemplate.rect.position.y += 0.18f;
     GameStructs::ButtonProperties multi = buttonPropTemplate;
@@ -99,6 +105,39 @@ void MainMenuScene::exitScene()
 }
 
 void MainMenuScene::create_start_button(const GameStructs::ButtonProperties &bp)
+{
+    auto *mngr = Game::Instance()->get_mngr();
+    auto e = create_button(bp);
+
+    auto imgComp = mngr->addComponent<ImageForButton>(e,
+                                                      &sdlutils().images().at(bp.sprite_key),
+                                                      &sdlutils().images().at(bp.sprite_key + "_selected"),
+                                                      bp.rect,
+                                                      0,
+                                                      Game::Instance()->get_mngr()->getComponent<camera_component>(
+                                                                                      Game::Instance()->get_mngr()->getHandler(ecs::hdlr::CAMERA))
+                                                          ->cam);
+
+    auto buttonComp = mngr->getComponent<Button>(e);
+    buttonComp->connectClick([buttonComp, imgComp, mngr]()
+                             {
+        imgComp->_filter = false;
+        imgComp->swap_textures();
+        Game::Instance()->queue_scene(Game::SELECTIONMENU); });
+
+    buttonComp->connectHover([buttonComp, imgComp]()
+                             {
+        imgComp->_filter = true;
+        imgComp->swap_textures();
+        sdlutils().soundEffects().at("button_hover").play(); });
+
+    buttonComp->connectExit([buttonComp, imgComp]()
+                            {
+        imgComp->_filter = false;
+        imgComp->swap_textures(); });
+}
+
+void MainMenuScene::create_start_endless_button(const GameStructs::ButtonProperties &bp)
 {
     auto *mngr = Game::Instance()->get_mngr();
     auto e = create_button(bp);
