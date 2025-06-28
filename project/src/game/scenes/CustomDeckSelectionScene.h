@@ -8,11 +8,11 @@
 class ImageForButton;
 class Card;
 using LastButton = ImageForButton*;
-class PersDeckSelectionMenuScene : public Scene
+class CustomDeckSelectionScene : public Scene
 {
 public:
-	PersDeckSelectionMenuScene();
-	virtual ~PersDeckSelectionMenuScene();
+	CustomDeckSelectionScene();
+	virtual ~CustomDeckSelectionScene();
 	void initScene() override;
 	void enterScene() override;
 	void exitScene() override;

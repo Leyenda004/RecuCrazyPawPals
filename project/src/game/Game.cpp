@@ -15,6 +15,7 @@
 #include "scenes/Scene.h"
 #include "scenes/MainMenuScene.h"
 #include "scenes/SelectionMenuScene.h"
+#include "scenes/CustomDeckSelectionScene.h"
 #include "scenes/GameScene.h"
 #include "scenes/GameOverScene.h"
 #include "scenes/RewardScene.h"
@@ -191,6 +192,7 @@ void Game::initGame()
 	_scenes[MAINMENU] = new MainMenuScene();
 	_scenes[MULTIPLAYERMENU] = new MultiplayerMenu();
 	_scenes[SELECTIONMENU] = new SelectionMenuScene();
+	_scenes[CUSTOMDECKSELECTIONMENU] = new CustomDeckSelectionScene();
 	_scenes[REWARDSCENE] = new RewardScene();
 	_scenes[MYTHICSCENE] = new MythicScene();
 	_scenes[GAMEOVER] = new GameOverScene();

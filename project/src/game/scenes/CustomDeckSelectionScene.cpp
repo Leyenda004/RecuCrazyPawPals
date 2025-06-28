@@ -1,5 +1,5 @@
 
-#include "PersDeckSelectionMenuScene.h"
+#include "CustomDeckSelectionScene.h"
 #include "../../our_scripts/components/ui/Button.h"
 #include "../GameStructs.h"
 #include "../../utils/Vector2D.h"
@@ -26,15 +26,15 @@
 #include <iostream>
 #include <typeinfo>
 #include <algorithm>
-PersDeckSelectionMenuScene::PersDeckSelectionMenuScene() 
+CustomDeckSelectionScene::CustomDeckSelectionScene() 
     : Scene(ecs::scene::SELECTIONMENUSCENE), _weapon_selected(false), _deck_selected(false), _last_weapon_button(nullptr), _last_deck_button(nullptr), 
     _num_cards_of_deck(4), _activate_play_button(false) {
 }
 
-PersDeckSelectionMenuScene::~PersDeckSelectionMenuScene()
+CustomDeckSelectionScene::~CustomDeckSelectionScene()
 {
 }
-void PersDeckSelectionMenuScene::create_weapon_buttons() {
+void CustomDeckSelectionScene::create_weapon_buttons() {
     float umbral = 0.0075f;
     float offsetX = 0.07f;  // Distance between buttons on the X axis
     float startX = 0.71f;   // Starting position of the first button on X
@@ -92,7 +92,7 @@ void PersDeckSelectionMenuScene::create_weapon_buttons() {
     //create_weapon_button(GameStructs::WEAPON7, another2);
 }
 
-void PersDeckSelectionMenuScene::create_back_button(const GameStructs::ButtonProperties& bp) {
+void CustomDeckSelectionScene::create_back_button(const GameStructs::ButtonProperties& bp) {
     auto* mngr = Game::Instance()->get_mngr();
     auto e = create_button(bp);
 
@@ -123,7 +123,7 @@ void PersDeckSelectionMenuScene::create_back_button(const GameStructs::ButtonPro
         });
 }
 
-void PersDeckSelectionMenuScene::create_deck_buttons() {
+void CustomDeckSelectionScene::create_deck_buttons() {
     float umbral = 0.1f;
     //create the first button prop
     GameStructs::ButtonProperties buttonPropTemplate = {
@@ -150,7 +150,7 @@ void PersDeckSelectionMenuScene::create_deck_buttons() {
     create_deck_button(GameStructs::FOUR, deck4B);
 }
 
-void PersDeckSelectionMenuScene::initScene() {
+void CustomDeckSelectionScene::initScene() {
     create_static_background(&sdlutils().images().at("selection"));
     
     create_weapon_info();
@@ -160,7 +160,7 @@ void PersDeckSelectionMenuScene::initScene() {
     create_enter_button();
 }
 
-void PersDeckSelectionMenuScene::reset() {
+void CustomDeckSelectionScene::reset() {
     _weapon_selected = false;
     _deck_selected = false;
     //we need to clean the filter of both side texture
@@ -186,7 +186,7 @@ void PersDeckSelectionMenuScene::reset() {
     }
 }
 
-void PersDeckSelectionMenuScene::enterScene()
+void CustomDeckSelectionScene::enterScene()
 {
     Game::Instance()->get_mngr()->change_ent_scene(Game::Instance()->get_mngr()->getHandler(ecs::hdlr::CAMERA), ecs::scene::SELECTIONMENUSCENE);
 #ifdef GENERATE_LOG
@@ -201,7 +201,7 @@ void PersDeckSelectionMenuScene::enterScene()
     }
 }
 
-void PersDeckSelectionMenuScene::exitScene()
+void CustomDeckSelectionScene::exitScene()
 {
     auto* mngr = Game::Instance()->get_mngr();
     //if(_activate_play_button)mngr->getComponent<ImageForButton>(mngr->getHandler(ecs::hdlr::TOGAMEBUTTON))->swap_textures();
@@ -224,7 +224,7 @@ void PersDeckSelectionMenuScene::exitScene()
 
 }
 
-void PersDeckSelectionMenuScene::render()
+void CustomDeckSelectionScene::render()
 {
     Scene::render();
     if (showing_message) {
@@ -245,7 +245,7 @@ void PersDeckSelectionMenuScene::render()
     }
 }
 
-void PersDeckSelectionMenuScene::create_weapon_button(GameStructs::WeaponType wt, const GameStructs::ButtonProperties& bp) {
+void CustomDeckSelectionScene::create_weapon_button(GameStructs::WeaponType wt, const GameStructs::ButtonProperties& bp) {
     auto* mngr = Game::Instance()->get_mngr();
     auto e = create_button(bp);
     auto buttonComp = mngr->getComponent<Button>(e);
@@ -348,7 +348,7 @@ void PersDeckSelectionMenuScene::create_weapon_button(GameStructs::WeaponType wt
     });
 }
 
-void PersDeckSelectionMenuScene::create_deck_button(GameStructs::DeckType dt, const GameStructs::ButtonProperties& bp) {
+void CustomDeckSelectionScene::create_deck_button(GameStructs::DeckType dt, const GameStructs::ButtonProperties& bp) {
     auto* mngr = Game::Instance()->get_mngr();
     auto e = create_button(bp);
     auto buttonComp = mngr->getComponent<Button>(e);
@@ -411,7 +411,7 @@ void PersDeckSelectionMenuScene::create_deck_button(GameStructs::DeckType dt, co
         });
 }
 
-void PersDeckSelectionMenuScene::create_deck_info(const rect_f32& rect) {
+void CustomDeckSelectionScene::create_deck_info(const rect_f32& rect) {
     auto& cam = Game::Instance()->get_mngr()->getComponent<camera_component>(Game::Instance()->get_mngr()->getHandler(ecs::hdlr::CAMERA))->cam;
     ecs::entity_t e = create_entity(
         ecs::grp::DECKINFO,
@@ -424,7 +424,7 @@ void PersDeckSelectionMenuScene::create_deck_info(const rect_f32& rect) {
     );
 }
 
-void PersDeckSelectionMenuScene::create_deck_infos() {
+void CustomDeckSelectionScene::create_deck_infos() {
     float umbral = 0.14f;
     rect_f32 r = {{ 0.0375f, 0.385f }, { 0.325f, 0.14f }};
     for (int i = 0; i < _num_cards_of_deck; ++i) {
@@ -433,7 +433,7 @@ void PersDeckSelectionMenuScene::create_deck_infos() {
     }
 }
 
-void PersDeckSelectionMenuScene::create_weapon_info() {
+void CustomDeckSelectionScene::create_weapon_info() {
    // rect_f32 rect = {{1.3f, 0.25f} ,{0.75f, 0.5f}};
     rect_f32 rect = { {0.695f, 0.315f} ,{0.3f, 0.25f} };
     ecs::entity_t e = create_entity(
@@ -449,7 +449,7 @@ void PersDeckSelectionMenuScene::create_weapon_info() {
     mngr->setHandler(ecs::hdlr::WEAPONINFO, e);
 }
 
-void PersDeckSelectionMenuScene::set_concrete_deck_info(const std::list<Card*>& cl) {
+void CustomDeckSelectionScene::set_concrete_deck_info(const std::list<Card*>& cl) {
     auto mngr = Game::Instance()->get_mngr();
     auto& infos = mngr->getEntities(ecs::grp::DECKINFO);
 
@@ -461,7 +461,7 @@ void PersDeckSelectionMenuScene::set_concrete_deck_info(const std::list<Card*>& 
     }
 }
 
-void PersDeckSelectionMenuScene::create_enter_button() {
+void CustomDeckSelectionScene::create_enter_button() {
     GameStructs::ButtonProperties bp = {
          { {10.0f, 0.4f},{0.2f, 0.15f} },
          0.0f, "ready", ecs::grp::UI
@@ -522,7 +522,7 @@ void PersDeckSelectionMenuScene::create_enter_button() {
     imgComp->swap_textures();});
 }
 
-void PersDeckSelectionMenuScene::update(uint32_t delta_time) {
+void CustomDeckSelectionScene::update(uint32_t delta_time) {
 
     Scene::update(delta_time);
 
