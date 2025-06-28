@@ -1,0 +1,294 @@
+.modak-regular {
+    font-family: "Modak", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.cherry-bomb-one-regular {
+    font-family: "Cherry Bomb One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.sour-gummy-200 {
+    font-family: "Sour Gummy", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.rubik-bubbles-regular {
+    font-family: "Rubik Bubbles", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.sue-ellen-francisco-regular {
+    font-family: "Sue Ellen Francisco", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.barriecito-regular {
+    font-family: "Barriecito", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: #f4e9d3;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url('../img/floor_bg.png');
+}
+
+.encabezado {
+    border: 0.3vw solid #675547;
+    border-bottom-width: 0;
+    background-color: #877465;
+    border-top-left-radius: 1.5vw;
+    border-top-right-radius: 1.5vw;
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    padding-left: 1vw;
+    background-image: none;
+}
+
+.logo {
+    width: 5vw;
+    height: auto;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+    color: #c9b8a7;
+}
+
+.titulo-principal {
+    font-family: "Cherry Bomb One", system-ui;
+    font-size: 7vw;
+    text-align: center;
+    padding-left: 10vw;
+    -webkit-text-stroke: 0.1vw black;
+}
+
+.slogan {
+    font-family: "Barriecito", system-ui;
+    font-size: 1.5vw;
+    text-align: center;
+    padding-top: 7vw;
+}
+
+h2 {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    font-family: "Cherry Bomb One", system-ui;
+    font-size: 6.5vw;
+    text-align: center;
+    font-weight: normal;
+    color: #83c1f5;
+    -webkit-text-stroke: 0.3vw black;
+}
+
+h3 {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    font-family: "Cherry Bomb One", system-ui;
+    font-size: 4vw;
+    text-align: center;
+    font-weight: normal;
+}
+
+p {
+    font-family: "Sour Gummy";
+    font-size: 1.4vw;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.column {
+    float: left;
+    width: 25%;
+}
+
+.column2 {
+    float: left;
+    width: 33%;
+}
+
+.column3 {
+    float: left;
+    width: 50%;
+}
+
+.column4 {
+    float: right;
+    width: 50%;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 90%;
+    padding: 0.5vw;
+    text-align: center;
+    font-family: "Sour Gummy";
+    font-size: 0.8vw;
+    color: black;
+}
+
+.image, .iconimage {
+    align-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.iconimage {
+    filter: brightness(0%);
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2vw;
+}
+
+.tab {
+    display: flex;
+    justify-content: center;
+    gap: 4vw;
+    border-left: 0.3vw solid #675547;
+    border-right: 0.3vw solid #675547;
+    border-bottom: 0.3vw solid #675547;
+    background-color: #c9b8a7;
+    border-bottom-left-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+}
+
+    .tab button {
+        font-family: "Cherry Bomb One", system-ui;
+        background-color: #f4e9d3;
+        outline: none;
+        cursor: pointer;
+        padding: 1.5vw 2vw;
+        font-size: 2vw;
+        transition: 0.3s;
+        border-bottom-left-radius: 2vw;
+        border-bottom-right-radius: 2vw;
+        color: #dba780;
+        -webkit-text-stroke: 0.1vw #4a2714;
+    }
+
+        .tab button:hover {
+            background-color: #8e817a;
+        }
+
+        .tab button.active {
+            background-color: #c1e1df;
+        }
+
+.tabcontent {
+    display: none;
+}
+
+.info1, .info2 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.info1-img {
+    width: 35vw;
+    height: auto;
+    padding-right: 4vw;
+    padding-top: 4vw;
+}
+
+.info1-text p:first-child,
+.info2-text p:first-child {
+    font-weight: bold;
+    font-size: 3vw;
+    width: 100%;
+    padding-top: 2.5vw;
+    padding-bottom: 0;
+}
+
+.info1-text p,
+.info2-text p {
+    text-align: left;
+    font-size: 1.5vw;
+    margin-left: 0;
+    padding-bottom: 6vw;
+    padding-left: 3vw;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.info2 {
+    margin-left: 5vw;
+}
+
+.info2-img {
+    width: 30vw;
+    height: auto;
+    padding-right: 4vw;
+    padding-left: 2vw;
+}
+
+.logo1 {
+    width: 12vw;
+    height: auto;
+}
+
+.dev-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5vw;
+    margin-left: 24%;
+}
+
+.credits-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5vw;
+    justify-content: center;
+}
+
+.credits-column {
+    text-align: center;
+}
+
+.controls {
+    width: 35vw;
+    height: auto;
+    padding-left: 7%;
+    padding-top: 3%;
+}
+
+.download-container {
+    text-align: center;
+    margin-top: 3%;
+}
+
+.download-btn {
+    background-color: #83c1f5;
+    color: white;
+    border: none;
+    padding: 1.5vw 3vw;
+    font-size: 2vw;
+    cursor: pointer;
+    border-radius: 0.5vw;
+    font-family: "Barriecito", system-ui;
+}
+
+    .download-btn:hover {
+        background-color: #33628a;
+        font-size: 2.25vw;
+    }
