@@ -672,7 +672,7 @@ void CustomDeckSelectionScene::add_card_to_deck(Card* card) {
 // Crea un botón para eliminar la última carta del mazo
 void CustomDeckSelectionScene::create_remove_card_button() {
     GameStructs::ButtonProperties bp = {
-        { {0.45f, 0.85f}, {0.1f, 0.07f} },
+        { {0.55f, 0.85f}, {0.15f, 0.15f} },
         0.0f, "remove_card", ecs::grp::UI
     };
 
@@ -796,9 +796,4 @@ void CustomDeckSelectionScene::create_arrow_buttons() {
     down_btn->connectClick([this]() { change_page(1); });
     down_btn->connectHover([down_img]() { down_img->_filter = true; });
     down_btn->connectExit([down_img]() { down_img->_filter = false; sdlutils().soundEffects().at("button_hover").play();});
-}
-
-void CustomDeckSelectionScene::change_page(int delta) {
-    current_array_index += delta;
-    refresh_deck_visual(current_array_index);
 }
