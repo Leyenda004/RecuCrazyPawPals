@@ -1,5 +1,6 @@
 
 #include "Card.hpp"
+#include <memory>
 class MovementController;
 
 class Fireball : public Card /*, public event_system::event_receiver*/ {
@@ -140,5 +141,43 @@ public:
 	Prime();
 	void on_play(Deck& d, const Vector2D* player_position, const Vector2D* target_position) override;
 };
-#pragma endregion
 
+// Enum para las cartas jugables
+enum class PlayableCardType {
+	Fireball,
+	Minigun,
+	Lighting,
+	Kunai,
+	Recover,
+	CardSpray,
+	EldritchBlast,
+	Primordia,
+	Commune,
+	Evoke,
+	Fulgur,
+	QuickFeet,
+	CatKuzaCard,
+	N_CARD_TYPES // Para saber cuántas hay
+};
+
+// Creador de cartas a partir del enum
+inline Card* create_card_from_type(PlayableCardType type) {
+	switch (type) {
+		case PlayableCardType::Fireball: return new Fireball();
+		case PlayableCardType::Minigun: return new Minigun();
+		case PlayableCardType::Lighting: return new Lighting();
+		case PlayableCardType::Kunai: return new Kunai();
+		case PlayableCardType::Recover: return new Recover();
+		case PlayableCardType::CardSpray: return new CardSpray();
+		case PlayableCardType::EldritchBlast: return new EldritchBlast();
+		case PlayableCardType::Primordia: return new Primordia();
+		case PlayableCardType::Commune: return new Commune();
+		case PlayableCardType::Evoke: return new Evoke();
+		case PlayableCardType::Fulgur: return new Fulgur();
+		case PlayableCardType::QuickFeet: return new QuickFeet();
+		case PlayableCardType::CatKuzaCard: return new CatKuzaCard();
+		default: return nullptr;
+	}
+}
+
+#pragma endregion

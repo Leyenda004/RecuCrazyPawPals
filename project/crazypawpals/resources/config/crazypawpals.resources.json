@@ -528,6 +528,10 @@
       "file": "resources/images/ui/infos/card_prime_info.png"
     },
     {
+      "id": "card_super_michi_mafioso_info",
+      "file": "resources/images/ui/infos/card_super_michi_mafioso_info.png"
+    },    
+    {
       "id": "event_letters",
       "file": "resources/images/enviroment/event_letters.png"
     },
@@ -666,6 +670,30 @@
     {
       "id": "next_selected",
       "file": "resources/images/ui/buttons/next_selected.png"
+    },
+    {
+      "id": "remove_card",
+      "file": "resources/images/ui/buttons/remove_card.png"
+    },
+    {
+      "id": "remove_card_selected",
+      "file": "resources/images/ui/buttons/remove_card_selected.png"
+    },
+    {
+      "id": "arrow_up",
+      "file": "resources/images/ui/buttons/arrow_up.png"
+    },
+    {
+      "id": "arrow_up_selected",
+      "file": "resources/images/ui/buttons/arrow_up_selected.png"
+    },
+    {
+      "id": "arrow_down",
+      "file": "resources/images/ui/buttons/arrow_down.png"
+    },
+    {
+      "id": "arrow_down_selected",
+      "file": "resources/images/ui/buttons/arrow_down_selected.png"
     },
     {
       "id": "mythic",

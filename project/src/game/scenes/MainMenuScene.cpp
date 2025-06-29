@@ -156,7 +156,7 @@ void MainMenuScene::create_start_endless_button(const GameStructs::ButtonPropert
                              {
         imgComp->_filter = false;
         imgComp->swap_textures();
-        Game::Instance()->queue_scene(Game::SELECTIONMENU); });
+        Game::Instance()->queue_scene(Game::CUSTOMDECKSELECTIONMENU); });
 
     buttonComp->connectHover([buttonComp, imgComp]()
                              {
