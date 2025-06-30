@@ -116,6 +116,10 @@
       "file": "resources/images/projectiles/p_card_fireball.png"
     },
     {
+      "id": "p_arrows",
+      "file": "resources/images/projectiles/p_card_arrows.png"
+    },
+    {
       "id": "p_lighting",
       "file": "resources/images/projectiles/p_card_lighting.png"
     },
@@ -198,6 +202,10 @@
     {
       "id": "card_fireball",
       "file": "resources/images/cards/card_fireball.png"
+    },
+    {
+      "id": "card_arrows",
+      "file": "resources/images/cards/card_arrows.png"
     },
     {
       "id": "card_minigun",
@@ -482,6 +490,10 @@
     {
       "id": "card_fireball_info",
       "file": "resources/images/ui/infos/card_fireball_info.png"
+    },
+    {
+      "id": "card_arrows_info",
+      "file": "resources/images/ui/infos/card_arrows_info.png"
     },
     {
       "id": "card_minigun_info",

@@ -520,7 +520,7 @@ void CustomDeckSelectionScene::refresh_deck_visual(int actualizar_index = -1) {
 
 void CustomDeckSelectionScene::create_enter_button() {
     GameStructs::ButtonProperties bp = {
-         { {10.0f, 0.15f},{0.2f, 0.15f} },
+         { {10.0f, 0.18f},{0.2f, 0.15f} },
          0.0f, "ready", ecs::grp::UI
     };
     auto e = create_button(bp);
@@ -722,7 +722,7 @@ void CustomDeckSelectionScene::add_card_to_deck(Card* card) {
 // Crea un botón para eliminar la última carta del mazo
 void CustomDeckSelectionScene::create_remove_card_button() {
     GameStructs::ButtonProperties bp = {
-        { {0.55f, 0.85f}, {0.15f, 0.15f} },
+        { {0.5f, 0.88f}, {0.15f, 0.15f} },
         0.0f, "remove_card", ecs::grp::UI
     };
 

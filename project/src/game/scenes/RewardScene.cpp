@@ -606,6 +606,9 @@ void RewardScene::add_new_reward_card() {
     case GameStructs::FIREBALL:
         c = new Fireball();
         break;
+    case GameStructs::ARROWS:
+        c = new Arrows();
+        break;
     case GameStructs::LIGHTING:
         c = new Lighting();
         break;

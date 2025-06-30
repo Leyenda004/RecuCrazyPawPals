@@ -37,7 +37,43 @@ void Fireball::event_callback0(const Msg& m)
 */
 #pragma endregion
 
+#pragma region arrows
+Arrows::Arrows()
+	: Card("card_arrows", Resources(3)) // Coste de maná 3
+{
+}
 
+void Arrows::on_play(Deck& d, const Vector2D* player_position, const Vector2D* target_position)
+{
+    Card::on_play(d, player_position, target_position);
+	GameStructs::BulletProperties bp = GameStructs::BulletProperties();
+
+	bp.init_pos = *player_position;
+	bp.speed = 0.35f;
+	bp.height = 2.5f;
+	bp.width = 2.0f;
+	bp.life_time = 2.5f;
+	bp.sprite_key = "p_arrows";
+	bp.damage = 5;
+	bp.pierce_number = INT_MAX;
+	bp.collision_filter = GameStructs::collide_with::enemy;
+
+	
+	Vector2D dirOr = ((*target_position) - (*player_position)).normalize();
+    // 8 direcciones (cada 45 grados)
+    for (int i = 0; i < 8; ++i) {
+        float angle = i * (M_PI / 4.0f); // 0, 45, 90...
+		
+        // Vector2D dir(cos(angle), sin(angle)); // 8 direcciones
+        Vector2D dir = (dirOr + Vector2D(cos(angle), sin(angle))).normalize(); // Apuntadas
+
+        bp.dir = dir;
+		Game::Instance()->get_currentScene()->create_proyectile(bp, ecs::grp::BULLET);
+    }
+
+	
+}
+#pragma endregion
 #pragma region minigun
 Minigun::Minigun()
 	: Card("card_minigun", Resources(2)), _pl_vec(), _playing(false), _time_since_played(0)
@@ -95,7 +131,7 @@ void Minigun::update(uint32_t dt)
 #pragma endregion
 
 
-#pragma region lightning
+#pragma region lighting
 Lighting::Lighting()
 	:Card("card_lighting", Resources(2))
 {

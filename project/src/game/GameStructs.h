@@ -130,6 +130,7 @@ namespace GameStructs
 		EVOKE,
 		FULGUR,
 		QUICK_FEET,
+		ARROWS,
 		LAST_CARD,
 	};
 	struct MythicButtonProperties : public ButtonProperties

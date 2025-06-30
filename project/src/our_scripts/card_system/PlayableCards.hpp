@@ -134,6 +134,12 @@ private:
 	MovementController* _ctrl;
 };
 
+class Arrows : public Card {
+public:
+    Arrows();
+    void on_play(Deck& d, const Vector2D* player_position, const Vector2D* target_position) override;
+};
+
 // The following cards exist for testing purposes and may not be playable in the finished product. These are subject to change.
 #pragma region TestCards
 class Prime : public Card {
@@ -157,6 +163,7 @@ enum class PlayableCardType {
 	Fulgur,
 	QuickFeet,
 	CatKuzaCard,
+	Arrows,
 	N_CARD_TYPES // Para saber cuántas hay
 };
 
@@ -176,6 +183,7 @@ inline Card* create_card_from_type(PlayableCardType type) {
 		case PlayableCardType::Fulgur: return new Fulgur();
 		case PlayableCardType::QuickFeet: return new QuickFeet();
 		case PlayableCardType::CatKuzaCard: return new CatKuzaCard();
+		case PlayableCardType::Arrows: return new Arrows();
 		default: return nullptr;
 	}
 }
