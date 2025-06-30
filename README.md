@@ -65,7 +65,11 @@
 ## 1. Resumen  
 
 ### 1.1. Descripción  
-Roguelike de disparos 2D en perspectiva cenital, donde el jugador tiene el control del disparo del personaje. Las habilidades que el jugador usa pertenecen a un mazo de cartas que podrá mejorar a lo largo de la partida. El juego se divide en oleadas de enemigos. Al completar 10 oleadas, el jugador habrá ganado; en caso de morir antes, habrá perdido y tendrá que comenzar desde cero.  
+Roguelike de disparos 2D en perspectiva cenital, donde el jugador tiene el control del disparo del personaje. Las habilidades que el jugador usa pertenecen a un mazo de cartas que podrá mejorar a lo largo de la partida. El juego se divide en oleadas de enemigos. Al completar 10 oleadas, el jugador habrá ganado; en caso de morir antes, habrá perdido y tendrá que comenzar desde cero.
+
+**Novedades principales:**  
+- **Modo Endless Run:** Se ha añadido un segundo modo de juego, Endless Run, en el que el jugador se enfrenta a oleadas infinitas de enemigos. El objetivo es sobrevivir el mayor tiempo posible y alcanzar la mayor cantidad de oleadas, de dificultad creciente.
+- **Creación y personalización de mazos:** Ahora el jugador puede crear y personalizar su propio mazo de cartas antes de comenzar la partida de Endless Run, eligiendo entre diferentes combinaciones de cartas y estrategias.
 
 ### 1.2. Género  
 Roguelike, cartas, acción, top-down shooter.  
@@ -86,7 +90,7 @@ En un acogedor café de gatos en plena reforma, extrañas criaturas han aparecid
 ## 2. Gameplay  
 
 ### 2.1. Objetivo del juego  
-El objetivo del juego es completar un número concreto de oleadas (10). Este sería el objetivo a largo plazo, así como mejorar tu mazo y personaje al final de cada oleada. A corto plazo, en cada oleada, el jugador debe sobrevivir y eliminar a todos los enemigos para pasar a la siguiente.  
+El objetivo del juego es completar un número concreto de oleadas (10) en el modo clásico, o sobrevivir el mayor número posible de oleadas en el modo Endless Run.
 
 ### 2.2. Core loops  
 ![Diagrama de flujo](https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/Diagrama%20de%20flujo.jpg)
@@ -123,7 +127,7 @@ El jugador tiene un maná máximo, la cantidad de maná del jugador nunca puede 
 La retícula es un elemento en pantalla que se corresponderá con la posición del ratón o se moverá con el stick de un mando. Marca el punto hacia el que se lanzarán los hechizos o el ataque de la arma.  
 
 ### 3.4. Cartas  
-El jugador dispone de un mazo de cartas inicial que podrá modificar a lo largo de la partida.  
+El jugador dispone de un mazo de cartas inicial que podrá modificar a lo largo de la partida.
 
 **Anatomía de una carta**  
 - Imagen identificativa.  
@@ -324,9 +328,15 @@ Tiene fijado al personaje en el centro y hace movimientos según el cursor, pero
 
 - **Menú de selección**
     - Escoger arma (pulsando izquierda o derecha).
-    - Escoger mazo inicial (pulsando izquierda o derecha)/
+    - Escoger mazo inicial (pulsando izquierda o derecha)
     - Comenzar.
 ![playmenu](https://github.com/user-attachments/assets/5eb4eb98-7bea-48ee-8b0c-ff2a0b27fc01)
+
+- **Menú de personalización de mazo**
+    - Escoger arma (pulsando izquierda o derecha).
+    - Escoger mazo inicial (pulsando izquierda o derecha)
+    - Comenzar.
+  <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/deck_selection.png" alt="Evoke_card" width="300">
 
 - **Menú de objetos míticos**
     - Elegir entre tres objetos.
@@ -407,8 +417,9 @@ Buscamos dinámicas de roguelike, de disparos en visión cenital, de deckbuildin
 *Menú Inicial*
 
 El juego comienza en el **menú principal**, donde el jugador puede:
-- Iniciar una nueva partida.
-- Iniciar una nueva partica multiplayer.
+- Iniciar una nueva partida en modo clásico
+- Iniciar una nueva partida en modo Endless Run
+- Iniciar una nueva partida multiplayer.
 - Tutorial.
 - Salir del juego.
 
@@ -554,6 +565,10 @@ P5: **(Preguntar solo si cogió alguna carta de mill). Pq crees q a veces salía
 
 
 ### 9.2. Conclusiones
+
+**Cambios recientes probados:**
+- El modo Endless Run ha sido testeado para asegurar la progresión de dificultad y la estabilidad en partidas largas.
+- El sistema de creación y personalización de mazos ha sido validado para garantizar que el jugador puede construir estrategias variadas y que la interfaz es intuitiva.
 
 #### Testing 22 de abril
 Hicimos un primer testing con 15 alumnos de 1º de Bachillerato. Las conclusiones de este fueron: Los controles básicos fueron fáciles de entender, pero el funcionamiento del sistema de mazo no se ha podido transmitir perfectamente. Es necesario realizar mejoras en las descripciones, aclarar la mecánica Mill. Además, estaría bien mejorar los efectos visuales y de sonido para facilitar la comprensión de los efectos de las cartas. 
