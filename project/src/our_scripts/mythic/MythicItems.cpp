@@ -235,8 +235,6 @@ void ZoomiesInducer::update(uint32_t dt) {
 }
 #pragma endregion
 
-// ...existing code...
-
 #pragma region ManaLockPotion
 ManaLockPotion::ManaLockPotion() : MythicItem("mana_lock_potion", "mythic_mana_lock_potion") {
     auto manager = Game::Instance()->get_mngr();
