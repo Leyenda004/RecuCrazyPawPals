@@ -159,7 +159,7 @@ void MythicScene::create_reward_mythic_buttons() {
     buttonPropTemplate.rect.size = { 0.3, 0.2f };
     create_mythic_selected_button(buttonPropTemplate);
 
-    //next round button (siempre visible, más pequeño y a la derecha)
+    //next round button (siempre visible)
     buttonPropTemplate.ID = ecs::grp::UI;
     buttonPropTemplate.sprite_key = "next";
     buttonPropTemplate.rect.position = { 0.80f, 0.4f };
@@ -304,9 +304,9 @@ void MythicScene::create_mythic_selected_button(const GameStructs::ButtonPropert
             add_new_reward_mythic();
             imgComp->_filter = false;
             imgComp->swap_textures();
-            auto imgGameScene = mngr->getComponent<ImageForButton>(mngr->getHandler(ecs::hdlr::NEXTROUNDMYTHIC));
-            imgGameScene->destination_rect.position.y = imgComp->destination_rect.position.y-0.15f;
-            imgComp->destination_rect.position.y = 100.0f;
+            // auto imgGameScene = mngr->getComponent<ImageForButton>(mngr->getHandler(ecs::hdlr::NEXTROUNDMYTHIC));
+            // imgGameScene->destination_rect.position.y = imgComp->destination_rect.position.y-0.15f;
+            // imgComp->destination_rect.position.y = 100.0f;
         }
         });
     buttonComp->connectHover([buttonComp, imgComp, this]() {

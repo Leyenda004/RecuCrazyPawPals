@@ -32,7 +32,7 @@ Deck::Deck()
 {
 	_discard_pile = CardList();
 	_hand = nullptr;
-	std::list<Card*> default_cardList = { new Lighting(), new Fireball(), new Minigun(), new Lighting() };
+	std::list<Card*> default_cardList = { new Lighting(), new Fireball(), new Minigun(), new Arrows() };
 	_draw_pile = CardList(default_cardList);
 	_draw_pile.shuffle();
 	_put_new_card_on_hand();

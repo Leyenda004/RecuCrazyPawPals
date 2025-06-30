@@ -49,7 +49,7 @@ void Arrows::on_play(Deck& d, const Vector2D* player_position, const Vector2D* t
 	GameStructs::BulletProperties bp = GameStructs::BulletProperties();
 
 	bp.init_pos = *player_position;
-	bp.speed = 0.35f;
+	bp.speed = 0.25f;
 	bp.height = 2.5f;
 	bp.width = 2.0f;
 	bp.life_time = 2.5f;

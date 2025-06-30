@@ -172,6 +172,8 @@ std::string RewardScene::select_card(GameStructs::CardType ct) {
         break;
     case GameStructs::FULGUR: s = "card_fulgur";
         break;
+    case GameStructs::ARROWS: s = "card_arrows";
+        break;
     default:
         break;
     }
@@ -560,11 +562,11 @@ void RewardScene::create_reward_selected_button(const GameStructs::ButtonPropert
             add_new_reward_card();
         }
         _selected = true;
-        auto imgNext = mngr->getComponent<ImageForButton>(mngr->getHandler(ecs::hdlr::NEXTROUNDREWARD));
         imgComp->_filter = false;
         imgComp->swap_textures();
-        imgNext->destination_rect.position = { buttonX, 0.4f };
-        imgComp->destination_rect.position.x += 100.0f;
+        // auto imgNext = mngr->getComponent<ImageForButton>(mngr->getHandler(ecs::hdlr::NEXTROUNDREWARD));
+        // imgNext->destination_rect.position = { buttonX, 0.4f };
+        // imgComp->destination_rect.position.x += 100.0f;
     });
     buttonComp->connectHover([buttonComp, imgComp, this]() {
         if (_selected) return;
@@ -704,8 +706,8 @@ void RewardScene::create_reward_exchange_button(const GameStructs::ButtonPropert
             add_new_reward_card();
             _last_deck_card_img->destination_rect.position.y += 0.05f;
 
-            auto imgNext = mngr->getComponent<ImageForButton>(mngr->getHandler(ecs::hdlr::NEXTROUNDREWARD));
-            imgNext->destination_rect.position = { buttonX, 0.4f };
+            // auto imgNext = mngr->getComponent<ImageForButton>(mngr->getHandler(ecs::hdlr::NEXTROUNDREWARD));
+            // imgNext->destination_rect.position = { buttonX, 0.4f };
 
             auto imgConfirm = mngr->getComponent<ImageForButton>(mngr->getHandler(ecs::hdlr::CONFIRMREWARD));
 
