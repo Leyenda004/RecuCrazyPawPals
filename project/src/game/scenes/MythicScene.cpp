@@ -1,4 +1,3 @@
-
 #include "MythicScene.h"
 
 #include "../../our_scripts/components/ui/Button.h"
@@ -60,7 +59,8 @@ void MythicScene::exitScene()
 {
     showing_message = false;
 
-    _lm->resize(1.0f/1.1f);
+    // Comprobar que _lm no es nullptr antes de acceder
+    if (_lm != nullptr) _lm->resize(1.0f/1.1f);
 
     _lm = nullptr;
     _selected = false;
@@ -159,11 +159,12 @@ void MythicScene::create_reward_mythic_buttons() {
     buttonPropTemplate.rect.size = { 0.3, 0.2f };
     create_mythic_selected_button(buttonPropTemplate);
 
-    //next round button
+    //next round button (siempre visible, más pequeño y a la derecha)
     buttonPropTemplate.ID = ecs::grp::UI;
-    buttonPropTemplate.sprite_key = "next"; 
-    buttonPropTemplate.rect.position.y = 10.0f;
-    create_next_round_button(buttonPropTemplate); 
+    buttonPropTemplate.sprite_key = "next";
+    buttonPropTemplate.rect.position = { 0.80f, 0.4f };
+    buttonPropTemplate.rect.size = { 0.15f, 0.15f };
+    create_next_round_button(buttonPropTemplate);
 }
 
 void MythicScene::create_reward_mythic_button(const GameStructs::ButtonProperties& bp)
@@ -536,9 +537,8 @@ void MythicScene::create_next_round_button(const GameStructs::ButtonProperties& 
     );
     auto buttonComp = mngr->getComponent<Button>(e);
 
-    buttonComp->connectClick([buttonComp, mngr, imgComp, this]() { if (_selected) {
-        _lm->swap_textures();
-        
+    // SIEMPRE disponible
+    buttonComp->connectClick([buttonComp, mngr, imgComp, this]() {
         if (!Game::Instance()->is_network_none()) {
             network_context& network = Game::Instance()->get_network();
             Game::network_users_state& state = Game::Instance()->get_network_state();
@@ -562,16 +562,16 @@ void MythicScene::create_next_round_button(const GameStructs::ButtonProperties& 
         else {
             Game::Instance()->queue_scene(Game::GAMESCENE);
         }
-        imgComp->destination_rect.position.y = 2.0f;
         imgComp->_filter = false;
         imgComp->swap_textures();
-    }});
-    buttonComp->connectHover([buttonComp, imgComp, this]() { 
+    });
+    buttonComp->connectHover([buttonComp, imgComp, this]() {
         imgComp->swap_textures();
         imgComp->_filter = true;
         sdlutils().soundEffects().at("button_hover").play();
-        });
-    buttonComp->connectExit([buttonComp, imgComp, this]() { 
+    });
+    buttonComp->connectExit([buttonComp, imgComp, this]() {
         imgComp->_filter = false;
-        imgComp->swap_textures();});
+        imgComp->swap_textures();
+    });
 }

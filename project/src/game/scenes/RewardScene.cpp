@@ -1,4 +1,3 @@
-
 #include "RewardScene.h"
 
 #include "../../our_scripts/components/ui/Button.h"
@@ -90,7 +89,8 @@ void RewardScene::exitScene()
         eImg->_filter = false;
     }
 
-    _lr->destination_rect.size = { _lr->destination_rect.size.x /1.1f,  _lr->destination_rect.size.y/1.1f };
+    // Comprobar que _lr no es nullptr antes de acceder
+    if (_lr != nullptr) _lr->destination_rect.size = { _lr->destination_rect.size.x /1.1f,  _lr->destination_rect.size.y/1.1f };
     
     _exchange = false;
     _lr = nullptr;
@@ -279,10 +279,11 @@ void RewardScene::create_reward_buttons() {
     buttonPropTemplate.rect.position.x = 10.0f;
     create_reward_exchange_button(buttonPropTemplate);
 
-    //next round button
+    //next round button (siempre visible, más pequeño y a la derecha)
     buttonPropTemplate.ID = ecs::grp::UI;
     buttonPropTemplate.sprite_key = "next";
-    buttonPropTemplate.rect.position = { 2.0f, 0.57f };
+    buttonPropTemplate.rect.position = { 0.80f, 0.4f };
+    buttonPropTemplate.rect.size = { 0.15f, 0.15f };
     create_next_round_button(buttonPropTemplate);
 }
 
@@ -822,9 +823,8 @@ void RewardScene::create_next_round_button(const GameStructs::ButtonProperties& 
     );
     auto buttonComp = mngr->getComponent<Button>(e);
 
-    buttonComp->connectClick([buttonComp, mngr, imgComp, this]() { if (_selected) {
-        _lr->swap_textures();
-        
+    // SIEMPRE disponible
+    buttonComp->connectClick([buttonComp, mngr, imgComp, this]() {
         if (!Game::Instance()->is_network_none()) {
             network_context& network = Game::Instance()->get_network();
             Game::network_users_state& state = Game::Instance()->get_network_state();
@@ -852,18 +852,18 @@ void RewardScene::create_next_round_button(const GameStructs::ButtonProperties& 
             if (_mythic) Game::Instance()->queue_scene(Game::MYTHICSCENE);
             else Game::Instance()->queue_scene(Game::GAMESCENE);
         }
-        imgComp->destination_rect.position.x = 10.0f;
         imgComp->swap_textures();
         imgComp->_filter = false;
-    }});
-    buttonComp->connectHover([buttonComp, imgComp, this]() { 
+    });
+    buttonComp->connectHover([buttonComp, imgComp, this]() {
         imgComp->swap_textures();
         sdlutils().soundEffects().at("button_hover").play();
         imgComp->_filter = true;
-        });
-    buttonComp->connectExit([buttonComp, imgComp, this]() { 
-        imgComp->_filter = false; 
-        imgComp->swap_textures();});
+    });
+    buttonComp->connectExit([buttonComp, imgComp, this]() {
+        imgComp->_filter = false;
+        imgComp->swap_textures();
+    });
 }
 
 void RewardScene::create_reward_info() {
