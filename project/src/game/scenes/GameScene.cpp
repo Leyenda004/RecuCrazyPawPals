@@ -85,13 +85,13 @@
 
 #pragma endregion
 
-GameScene::GameScene(bool endless_mode) 
-	: Scene(ecs::scene::GAMESCENE), endless_mode(endless_mode), wave_counter(0)
+GameScene::GameScene(bool endless)
+	: Scene(ecs::scene::GAMESCENE)
 {
 	event_system::event_manager::Instance()->suscribe_to_event(event_system::change_deccel, this, &event_system::event_receiver::event_callback0);
 	event_system::event_manager::Instance()->suscribe_to_event(event_system::player_dead, this, &event_system::event_receiver::event_callback1);
 
-	Game::Instance()->setEndlessMode(endless_mode);
+	endless_mode = endless;
 }
 GameScene::~GameScene()
 {
@@ -192,8 +192,7 @@ void GameScene::initScene()
 	auto hud = create_hud();
 	Game::Instance()->get_mngr()->setHandler(ecs::hdlr::HUD_ENTITY, hud);
 
-	// Reinicia el contador de oleadas al iniciar la escena
-	wave_counter = 0;
+	Game::Instance()->setEndlessMode(endless_mode);
 }
 
 void GameScene::enterScene()
@@ -220,7 +219,6 @@ void GameScene::enterScene()
 	auto wm = Game::Instance()->get_wave_manager();
 
 	if (Game::Instance()->is_host() || Game::Instance()->is_network_none()) {
-		if (endless_mode) ++wave_counter; // Si endless_mode, inicializa las oleadas a 1
 		dynamic_cast<WaveManager *>(wm)->start_new_wave();
 	}
 
@@ -1520,6 +1518,7 @@ void GameScene::event_callback1(const event_system::event_receiver::Msg &m)
 {
 	auto &&mngr = *Game::Instance()->get_mngr();
 	deccel_spawned_creatures_multi = 1;
+
 	mngr.getComponent<WaveManager>(mngr.getHandler(ecs::hdlr::WAVE))->reset_wave_manager();
 
 	// si es multiplayer hay que hacer add del componente fantastma

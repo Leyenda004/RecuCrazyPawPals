@@ -43,7 +43,10 @@ void HUD::render()
 	};
 	Texture numtex{
 		sdlutils().renderer(),
-		wavenum < 10 ? "0" + std::to_string(std::max(wavenum,0)) + "/10" : std::to_string(wavenum) + "/10",
+		Game::Instance()->getEndlessMode() ? 
+			("Wave " + (wavenum < 10) ? "0" + std::to_string(std::max(wavenum,0)) : std::to_string(wavenum))
+			: 
+			(wavenum < 10 ? "0" + std::to_string(std::max(wavenum,0)) + "/10" : std::to_string(wavenum) + "/10"),
 		sdlutils().fonts().at("RUBIK_MONO"),
 		SDL_Color(50,50,50,255) };
 	numtex.render(numtrue);

@@ -26,7 +26,7 @@ class GameScene : public event_system::event_receiver, public Scene
 	void client_handle_menssage(network_context& ctx);
 
 public:
-	GameScene(bool endless_mode = false); // Modificado para aceptar el modo infinito
+	GameScene(bool endless = false); // Modificado para aceptar el endless mode
 	~GameScene();
 	void initScene() override;
 	void enterScene() override;
@@ -69,16 +69,5 @@ public:
 	static ecs::entity_t create_dumb_player(ecs::sceneId_t scene, uint32_t playerId, std::string tex_name);
 protected:
 	static float deccel_spawned_creatures_multi;
-
-
-
-
-
-	// RECUPERACIÓN EXTRAORDINARIA
-public:
-	int get_wave_counter() const { return wave_counter; } // Getter para el contador de oleadas	
-protected:
-	bool endless_mode = false; // Variable para modo infinito
-	int wave_counter = 0;       // Contador de oleadas
-
+	bool endless_mode = false;
 };

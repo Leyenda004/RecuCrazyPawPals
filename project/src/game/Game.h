@@ -45,8 +45,12 @@ public:
 	void update_scene();
 	void queue_scene(State);
 	std::pair<int,int> get_world_half_size() const;
-	bool getEndlessMode() const { return endless_mode; }
+
 	void setEndlessMode(bool b) { endless_mode = b; }
+	bool getEndlessMode() { return endless_mode; }
+	void setRecord(int r) { record = r; }
+	int getRecord() { return record; }
+
 
 	//bool para salir del bucle principal
 	bool exit;
@@ -59,6 +63,7 @@ private:
 	int _next_scene_index = -1;
 	int _current_scene_index = -1;
 	bool endless_mode = false;
+	int record = 0;
 	std::vector<Scene*> _scenes;
 	std::vector<bool> _scene_inits;
 	std::pair<int, int> _screen_size = std::make_pair(960, 540);

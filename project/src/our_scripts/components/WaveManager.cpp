@@ -12,6 +12,8 @@
 #include "../../network/network_message.hpp"
 #include "../components/net/GhostStateComponent.h"
 
+#include "game/scenes/GameOverScene.h" // Para los métodos estáticos
+
 #ifdef GENERATE_LOG
 #include "../log_writer_to_csv.hpp"
 #include "Health.h"
@@ -222,7 +224,7 @@ void WaveManager::spawn_next_group_of_enemies()
 }
 //---------------------------------------------------------------------------------------------------------------------------------
 void WaveManager::update(uint32_t delta_time) {
-
+    // std::cout << "Endless mode: " << Game::Instance()->getEndlessMode() << std::endl;
     if (_wave_active) {
         _currentWaveTime = sdlutils().virtualTimer().currRealTime() - _currentWaveInitTime;
         _current_wave_event->update(delta_time);
@@ -376,6 +378,8 @@ void WaveManager::endwave()
         }
     }
     else{
+        GameOverScene::set_endless_wave(Game::Instance()->get_wave_manager()->get_current_wave());
+        
         fog->setFog(false);
         _all_enemies_already_spawned = false;
 

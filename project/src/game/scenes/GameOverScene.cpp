@@ -1,4 +1,3 @@
-
 #include "GameOverScene.h"
 #include "../../our_scripts/components/ui/Button.h"
 #include "../GameStructs.h"
@@ -25,6 +24,10 @@
 #include <iostream>
 #include <typeinfo>
 #include <algorithm>
+#include "../Game.h"
+
+int GameOverScene::endless_wave = 0;
+
 GameOverScene::GameOverScene()
     : Scene(ecs::scene::GAMEOVERSCENE) {}
 
@@ -59,6 +62,36 @@ void GameOverScene::exitScene()
 }
 void GameOverScene::render() {
     Scene::render();
+
+    if (Game::Instance()->getEndlessMode()) {
+
+        std::string msg = "Ronda alcanzada: " + std::to_string(endless_wave);
+        if (endless_wave > Game::Instance()->getRecord()) {
+            Game::Instance()->setRecord(endless_wave);
+            msg += "!\nNUEVO RECORD!";
+        } else {
+            msg += "\nRecord: " + std::to_string(Game::Instance()->getRecord());
+        }
+
+        Texture numtex{
+            sdlutils().renderer(),
+            msg,
+            sdlutils().fonts().at("RUBIK_MONO"),
+            SDL_Color(50,50,50,255) 
+        };
+
+        int scaleX = int(numtex.width() * 0.2f);
+        int scaleY = int(numtex.height() * 0.5f);
+
+        SDL_Rect dest = {
+            int(sdlutils().width() * 0.5f - scaleX * 0.5f),
+            int(sdlutils().height() * 0.25f),
+            scaleX,
+            scaleY
+        };
+        
+        numtex.render(dest);
+    }
 }
 void GameOverScene::create_enter_button() {
     GameStructs::ButtonProperties bp = {
