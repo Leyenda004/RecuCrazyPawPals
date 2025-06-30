@@ -121,21 +121,38 @@ void CustomDeckSelectionScene::create_back_button(const GameStructs::ButtonPrope
         });
 }
 
-// void CustomDeckSelectionScene::create_deck_buttons() {
-//     GameStructs::ButtonProperties buttonPropTemplate = {
-//          { {0.0075f, 0.2f},{0.085f, 0.135f} },
-//          0.0f, "", ecs::grp::DECKBUTTON
-//     };
-//     buttonPropTemplate.sprite_key = "deck1_button";
-//     create_deck_button(GameStructs::ONE, buttonPropTemplate);
-// }
+void CustomDeckSelectionScene::create_deck_buttons() {
+    GameStructs::ButtonProperties buttonPropTemplate = {
+         { {0.0075f, 0.2f},{0.085f, 0.135f} },
+         0.0f, "", ecs::grp::DECKBUTTON
+    };
+    
+    GameStructs::ButtonProperties deck1B = buttonPropTemplate;
+    deck1B.sprite_key = "deck1_button";
+    create_deck_button(GameStructs::ONE, deck1B);
+
+    buttonPropTemplate.rect.position.x += 0.05f;
+    GameStructs::ButtonProperties deck2B = buttonPropTemplate;
+    deck2B.sprite_key = "deck2_button";
+    create_deck_button(GameStructs::TWO, deck2B);
+
+    buttonPropTemplate.rect.position.x += 0.05f;
+    GameStructs::ButtonProperties deck3B = buttonPropTemplate;
+    deck3B.sprite_key = "deck3_button";
+    create_deck_button(GameStructs::THREE, deck3B);
+
+    buttonPropTemplate.rect.position.x += 0.05f;
+    GameStructs::ButtonProperties deck4B = buttonPropTemplate;
+    deck4B.sprite_key = "deck4_button";
+    create_deck_button(GameStructs::FOUR, deck4B);
+}
 
 void CustomDeckSelectionScene::initScene() {
     create_static_background(&sdlutils().images().at("selection"));
     create_weapon_info();
     create_weapon_buttons();
     create_enter_button();
-    // create_deck_buttons(); // Botones de decks (no necesarios)
+    create_deck_buttons(); // Botones de decks
 
     create_card_buttons(); // Mostrar todas las cartas como botones
     create_remove_card_button(); // Botón para eliminar carta
@@ -328,45 +345,78 @@ void CustomDeckSelectionScene::create_weapon_button(GameStructs::WeaponType wt, 
     });
 }
 
-// void CustomDeckSelectionScene::create_deck_button(GameStructs::DeckType dt, const GameStructs::ButtonProperties& bp) {
-    
-//     assign_default_deck(); // Asignar el mazo por defecto
-    
-//     auto e = create_button(bp);
-//     auto buttonComp = mngr->getComponent<Button>(e);
-//     auto player = mngr->getHandler(ecs::hdlr::PLAYER);
-//     //used for change the sprite once a button is clicked
-//     auto imgComp = mngr->addComponent<ImageForButton>(e,
-//         &sdlutils().images().at(bp.sprite_key),
-//         &sdlutils().images().at(bp.sprite_key + "_selected"),
-//         bp.rect,
-//         0,
-//         mngr->getComponent<camera_component>(mngr->getHandler(ecs::hdlr::CAMERA))->cam
-//     );
-    
-//     buttonComp->connectClick([buttonComp, imgComp, player, dt, this]() {
-//         //swap the actual buttons textures
-//         if (_last_deck_button != nullptr && _last_deck_button != imgComp) {
-//             imgComp->_filter = false;
-//             imgComp->swap_textures();
-//             _last_deck_button->swap_textures();
-//             //register the clicked button
-//         }
-//         else if (_last_deck_button == nullptr) { //special case: first click
-//             imgComp->_filter = false;
-//             imgComp->swap_textures();
-//         }
-//         _last_deck_button = imgComp;
-//     });
+void CustomDeckSelectionScene::create_deck_button(GameStructs::DeckType dt, const GameStructs::ButtonProperties& bp) {
+    auto e = create_button(bp);
+    auto buttonComp = mngr->getComponent<Button>(e);
+    auto player = mngr->getHandler(ecs::hdlr::PLAYER);
+    //used for change the sprite once a button is clicked
+    auto imgComp = mngr->addComponent<ImageForButton>(e,
+        &sdlutils().images().at(bp.sprite_key),
+        &sdlutils().images().at(bp.sprite_key + "_selected"),
+        bp.rect,
+        0,
+        mngr->getComponent<camera_component>(mngr->getHandler(ecs::hdlr::CAMERA))->cam
+    );
 
-//     buttonComp->connectHover([buttonComp, imgComp]() {
-//         imgComp->_filter = true;
-//         sdlutils().soundEffects().at("button_hover").play();
-//         });
-//     buttonComp->connectExit([buttonComp, imgComp]() {
-//         imgComp->_filter = false;
-//         });
-// }
+
+    buttonComp->connectClick([buttonComp, imgComp, player, dt, this]() {
+        
+        assign_default_deck();
+        
+        switch (dt)
+        {
+        case GameStructs::ONE:
+            add_card_to_deck(new Evoke());
+            add_card_to_deck(new Fireball());
+            add_card_to_deck(new Minigun());
+            add_card_to_deck(new Commune());
+            break;
+        case GameStructs::TWO:
+            add_card_to_deck(new Fireball());
+            add_card_to_deck(new CardSpray());
+            add_card_to_deck(new Lighting());
+            add_card_to_deck(new Minigun());
+            break;
+        case GameStructs::THREE:
+            add_card_to_deck(new Fulgur());
+            add_card_to_deck(new Fireball());
+            add_card_to_deck(new Minigun());
+            add_card_to_deck(new Kunai());
+            break;
+        case GameStructs::FOUR:
+            add_card_to_deck(new Kunai());
+            add_card_to_deck(new EldritchBlast());
+            add_card_to_deck(new QuickFeet());
+            add_card_to_deck(new CardSpray());
+            break;
+        default:
+            break;
+        }
+        _deck_selected = true;
+
+        //swap the actual buttons textures
+        if (_last_deck_button != nullptr && _last_deck_button != imgComp) {
+            imgComp->_filter = false;
+            imgComp->swap_textures();
+            _last_deck_button->swap_textures();
+            //register the clicked button
+        }
+        else if (_last_deck_button == nullptr) { //special case: first click
+            imgComp->_filter = false;
+            imgComp->swap_textures();
+        }
+        _last_deck_button = imgComp;
+
+        refresh_deck_visual(0); // Actualizar visualización del mazo
+    });
+    buttonComp->connectHover([buttonComp, imgComp]() {
+        imgComp->_filter = true;
+        sdlutils().soundEffects().at("button_hover").play();
+    });
+    buttonComp->connectExit([buttonComp, imgComp]() {
+        imgComp->_filter = false;
+    });
+}
 
 void CustomDeckSelectionScene::create_weapon_info() {
    // rect_f32 rect = {{1.3f, 0.25f} ,{0.75f, 0.5f}};
