@@ -85,10 +85,13 @@
 
 #pragma endregion
 
-GameScene::GameScene() : Scene(ecs::scene::GAMESCENE)
+GameScene::GameScene(bool endless_mode) 
+	: Scene(ecs::scene::GAMESCENE), endless_mode(endless_mode), wave_counter(0)
 {
 	event_system::event_manager::Instance()->suscribe_to_event(event_system::change_deccel, this, &event_system::event_receiver::event_callback0);
 	event_system::event_manager::Instance()->suscribe_to_event(event_system::player_dead, this, &event_system::event_receiver::event_callback1);
+
+	Game::Instance()->setEndlessMode(endless_mode);
 }
 GameScene::~GameScene()
 {
@@ -188,6 +191,9 @@ void GameScene::initScene()
 	spawn_wave_manager();
 	auto hud = create_hud();
 	Game::Instance()->get_mngr()->setHandler(ecs::hdlr::HUD_ENTITY, hud);
+
+	// Reinicia el contador de oleadas al iniciar la escena
+	wave_counter = 0;
 }
 
 void GameScene::enterScene()
@@ -212,8 +218,9 @@ void GameScene::enterScene()
 	manager.addComponent<GamePadPlayerCtrl>(player);
 	manager.addComponent<PlayerHUD>(player);
 	auto wm = Game::Instance()->get_wave_manager();
-	if (Game::Instance()->is_host() || Game::Instance()->is_network_none())
-	{
+
+	if (Game::Instance()->is_host() || Game::Instance()->is_network_none()) {
+		if (endless_mode) ++wave_counter; // Si endless_mode, inicializa las oleadas a 1
 		dynamic_cast<WaveManager *>(wm)->start_new_wave();
 	}
 

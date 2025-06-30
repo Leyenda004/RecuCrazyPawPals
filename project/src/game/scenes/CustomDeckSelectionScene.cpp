@@ -511,7 +511,7 @@ void CustomDeckSelectionScene::create_enter_button() {
             else {
                 imgComp->_filter = false;
                 // delete_default_card(); // Eliminaba la carta por defecto del mazo
-                Game::Instance()->queue_scene(Game::GAMESCENE);
+                Game::Instance()->queue_scene(Game::ENDLESSGAMESCENE);
                 imgComp->destination_rect.position.x = 10.0f;
             }
         }
@@ -560,7 +560,7 @@ void CustomDeckSelectionScene::update(uint32_t delta_time) {
                             state.game_state.ready_users.set(id, true);
                             state.game_state.ready_user_count++;
 
-                            if (checkAllPlayersReady())Game::Instance()->queue_scene(Game::GAMESCENE);
+                            if (checkAllPlayersReady())Game::Instance()->queue_scene(Game::ENDLESSGAMESCENE);
                             break;
                         }
                         default: {
@@ -580,7 +580,7 @@ void CustomDeckSelectionScene::update(uint32_t delta_time) {
                 switch (type_h) {
                 case network_message_type_start_game: {
                     std::cout << "mensaje de ir al juego" << std::endl;
-                    Game::Instance()->queue_scene(Game::GAMESCENE);
+                    Game::Instance()->queue_scene(Game::ENDLESSGAMESCENE);
                     break;
                 }
                 default: break;

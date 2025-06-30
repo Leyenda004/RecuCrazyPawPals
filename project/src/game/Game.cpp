@@ -188,6 +188,8 @@ void Game::initGame()
 	_scene_inits.resize(NUM_SCENE, false);
 
 	_scenes[GAMESCENE] = new GameScene();
+	// _scenes[ENDLESSGAMESCENE] = new EndlessGameScene();
+	_scenes[ENDLESSGAMESCENE] = new GameScene(true);
 	_scenes[TUTORIAL] = new TutorialScene();
 	_scenes[MAINMENU] = new MainMenuScene();
 	_scenes[MULTIPLAYERMENU] = new MultiplayerMenu();

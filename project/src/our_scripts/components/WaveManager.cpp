@@ -1,4 +1,3 @@
-
 #include <vector>
 #include <random>
 #include "WaveManager.h"
@@ -260,7 +259,11 @@ WaveManager::activateFog() {
 
 void 
 WaveManager::enterRewardsMenu() {
-    Game::Instance()->queue_scene(Game::REWARDSCENE);
+    if (Game::Instance()->getEndlessMode()) {
+        start_new_wave();
+    } else {
+        Game::Instance()->queue_scene(Game::REWARDSCENE);
+    }
 }
 
 void WaveManager::start_new_wave()
@@ -346,29 +349,43 @@ void WaveManager::endwave()
     player_movement_controller->total_movement = 0;
 
 #endif
-    if (_currentWave == 9) {
-        Game::Instance()->queue_scene(Game::State::VICTORY);
+    if (!Game::Instance()->getEndlessMode()){
+        if (_currentWave == 9) {
+            Game::Instance()->queue_scene(Game::State::VICTORY);
+        }
+        else {
+            fog->setFog(false);
+            _wave_active = false;
+            change_to_rewards_time = sdlutils().virtualTimer().currTime() + 3000;
+            _current_wave_event->end_wave_callback();
+            _all_enemies_already_spawned = false;
+            erase_all_bullets();
+            erase_all_enemies();
+    
+            std::cout << "mensaje fin de oleada" << std::endl;
+    
+            //SEND END WAVE MESSAGE
+            network_context& network = Game::Instance()->get_network();
+            for (network_connection_size i = 0; i < network.profile.host.sockets_to_clients.connection_count; ++i) {
+                TCPsocket& client = network.profile.host.sockets_to_clients.connections[i];
+                network_message_pack_send(
+                    client,
+                    network_message_pack_create(network_message_type_end_wave, create_end_wave_message())
+                );
+            }
+        }
     }
-    else {
+    else{
         fog->setFog(false);
+        _all_enemies_already_spawned = false;
+
+        // Necesario para entrar en la siguiente oleada
         _wave_active = false;
         change_to_rewards_time = sdlutils().virtualTimer().currTime() + 3000;
+
         _current_wave_event->end_wave_callback();
-        _all_enemies_already_spawned = false;
         erase_all_bullets();
         erase_all_enemies();
-
-        std::cout << "mensaje fin de oleada" << std::endl;
-
-        //SEND END WAVE MESSAGE
-        network_context& network = Game::Instance()->get_network();
-        for (network_connection_size i = 0; i < network.profile.host.sockets_to_clients.connection_count; ++i) {
-            TCPsocket& client = network.profile.host.sockets_to_clients.connections[i];
-            network_message_pack_send(
-                client,
-                network_message_pack_create(network_message_type_end_wave, create_end_wave_message())
-            );
-        }
     }
 }
 
