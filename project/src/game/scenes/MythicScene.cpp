@@ -111,6 +111,8 @@ std::string MythicScene::select_mythic(GameStructs::MythicType wt) {
         break;
     case GameStructs::ZOOMIESINDUCER: s = "mythic_zoomies_inducer";
         break;
+    case GameStructs::MANALOCKPOTION: s = "mythic_mana_lock_potion";
+        break;
     default:
         break;
     }
@@ -272,6 +274,8 @@ void MythicScene::add_new_reward_mythic() {
     case GameStructs::URANIUMSOCKS:m = new UraniumSocks();
         break;
     case GameStructs::ZOOMIESINDUCER:m = new ZoomiesInducer();
+        break;
+    case GameStructs::MANALOCKPOTION:m = new ManaLockPotion();
         break;
     default:
         break;

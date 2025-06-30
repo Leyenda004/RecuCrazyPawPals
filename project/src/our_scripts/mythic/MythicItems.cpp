@@ -234,3 +234,39 @@ void ZoomiesInducer::update(uint32_t dt) {
 	}
 }
 #pragma endregion
+
+// ...existing code...
+
+#pragma region ManaLockPotion
+ManaLockPotion::ManaLockPotion() : MythicItem("mana_lock_potion", "mythic_mana_lock_potion") {
+    auto manager = Game::Instance()->get_mngr();
+    health = manager->getComponent<Health>(_player);
+    mana = manager->getComponent<ManaComponent>(_player);
+}
+
+void ManaLockPotion::apply_effects() {
+    // Curamos al jugador al máximo
+    health->heal(health->getMaxHealth());
+
+    // Guarda valores antiguos
+    regen_or = mana->mana_regen();
+    mana_or = mana->raw_mana_count();
+	
+    locked = true;
+    lock_start_time = sdlutils().virtualTimer().currTime();
+}
+
+void ManaLockPotion::update(uint32_t dt) {
+    if (locked) {
+		// Bloquea maná y regeneración
+		mana->change_mana(0);
+		mana->set_mana_regen(-2000);
+        // Si han pasado 10 segundos, restauramos el maná y su regeneración
+        if (sdlutils().virtualTimer().currTime() - lock_start_time >= lock_max_time) {
+    		mana->change_mana(mana_or);
+            mana->set_mana_regen(regen_or);
+            locked = false;
+        }
+    }
+}
+#pragma endregion

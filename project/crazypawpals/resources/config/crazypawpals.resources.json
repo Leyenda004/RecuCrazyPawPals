@@ -756,6 +756,10 @@
       "file": "resources/images/ui/mythics/m_demonic_scratcher.png"
     },
     {
+      "id": "mythic_mana_lock_potion",
+      "file": "resources/images/ui/mythics/m_mana_lock_potion.png"
+    },
+    {
       "id": "mythic_blood_claw_info",
       "file": "resources/images/ui/infos/mythic_blood_claw_info.png"
     },
@@ -794,6 +798,10 @@
     {
       "id": "mythic_demonic_scratcher_info",
       "file": "resources/images/ui/infos/mythic_demonic_scratcher_info.png"
+    },
+    {
+      "id": "mythic_mana_lock_potion_info",
+      "file": "resources/images/ui/infos/mythic_mana_lock_potion_info.png"
     },
     {
       "id": "meteroid",

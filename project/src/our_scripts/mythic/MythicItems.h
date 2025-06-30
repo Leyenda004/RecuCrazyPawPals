@@ -203,3 +203,22 @@ public:
 	void set_movement_controller(MovementController* mc) { _mc = mc; }
 	void set_transform(Transform* tr) { _tr = tr; }
 };
+
+/**
+ * @class ManaLockPotion
+ * @brief Recovers all player's health but sets mana to 0 for 10 seconds.
+ */
+class ManaLockPotion : public MythicItem {
+    Health* health;
+    ManaComponent* mana;
+    int regen_or;
+    int mana_or;
+    int lock_max_time = 10000; // 10 segundos
+    int lock_start_time = 0;
+    bool locked = false;
+public:
+    ManaLockPotion();
+
+    void apply_effects() override;
+    void update(uint32_t dt) override;
+};
