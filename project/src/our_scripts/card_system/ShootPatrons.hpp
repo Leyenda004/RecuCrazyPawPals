@@ -28,5 +28,21 @@ namespace patrons {
 		}
 		return entities;
 	}
+
+	inline std::vector<ecs::entity_t> DiagonalShooting(GameStructs::BulletProperties& bp, ecs::grpId_t gId) {
+		std::vector<ecs::entity_t> entities;
+		Vector2D initialRot = bp.dir;
+		// Dispara 5 balas con �ngulos de -60, -30, 0, 30 y 60 grados
+		for (int i = 0; i < 8; ++i) {
+			
+			float angleOffset = (i * 45.0f) * (M_PI / 180.0f); // 45 grados entre cada disparo
+			bp.dir = Vector2D (cos(angleOffset), sin(angleOffset));
+			ecs::entity_t e = Game::Instance()->get_currentScene()->create_proyectile(bp, gId);
+			entities.push_back(e);
+		}
+		return entities;
+	}
+
+	
 }
 #endif // !SHOOTPATRONS

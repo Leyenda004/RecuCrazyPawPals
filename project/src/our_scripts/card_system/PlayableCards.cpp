@@ -36,44 +36,6 @@ void Fireball::event_callback0(const Msg& m)
 }
 */
 #pragma endregion
-
-#pragma region arrows
-Arrows::Arrows()
-	: Card("card_arrows", Resources(3)) // Coste de maná 3
-{
-}
-
-void Arrows::on_play(Deck& d, const Vector2D* player_position, const Vector2D* target_position)
-{
-    Card::on_play(d, player_position, target_position);
-	GameStructs::BulletProperties bp = GameStructs::BulletProperties();
-
-	bp.init_pos = *player_position;
-	bp.speed = 0.25f;
-	bp.height = 2.5f;
-	bp.width = 2.0f;
-	bp.life_time = 2.5f;
-	bp.sprite_key = "p_arrows";
-	bp.damage = 5;
-	bp.pierce_number = INT_MAX;
-	bp.collision_filter = GameStructs::collide_with::enemy;
-
-	
-	Vector2D dirOr = ((*target_position) - (*player_position)).normalize();
-    // 8 direcciones (cada 45 grados)
-    for (int i = 0; i < 8; ++i) {
-        float angle = i * (M_PI / 4.0f); // 0, 45, 90...
-		
-        // Vector2D dir(cos(angle), sin(angle)); // 8 direcciones
-        Vector2D dir = (dirOr + Vector2D(cos(angle), sin(angle))).normalize(); // Apuntadas
-
-        bp.dir = dir;
-		Game::Instance()->get_currentScene()->create_proyectile(bp, ecs::grp::BULLET);
-    }
-
-	
-}
-#pragma endregion
 #pragma region minigun
 Minigun::Minigun()
 	: Card("card_minigun", Resources(2)), _pl_vec(), _playing(false), _time_since_played(0)
@@ -129,7 +91,76 @@ void Minigun::update(uint32_t dt)
 	}
 }
 #pragma endregion
+#pragma region arrows
+Arrows::Arrows()
+	: Card("card_arrows", Resources(3)) // Coste de maná 3
+{
+}
 
+void Arrows::on_play(Deck& d, const Vector2D* player_position, const Vector2D* target_position)
+{
+	Card::on_play(d, player_position, target_position);
+
+	_bullets_properties.init_pos = *player_position;
+	_bullets_properties.speed = 0.25f;
+	_bullets_properties.height = 2.5f;
+	_bullets_properties.width = 2.0f;
+	_bullets_properties.life_time = 2.5f;
+	_bullets_properties.sprite_key = "p_arrows";
+	_bullets_properties.damage = 5;
+	_bullets_properties.pierce_number = INT_MAX;
+	_bullets_properties.collision_filter = GameStructs::collide_with::enemy;
+
+	_playing = true;
+	_time_since_played = 0;
+	_aim_vec = target_position;
+	_pl_vec = player_position;
+	_number_of_bullets_shot = 0;
+	if (d.get_primed()) {
+		d.set_primed(false);
+		_im_primed = true;
+		_number_of_shots = 3;
+		_shooting_duration = 3000;
+	}
+	else {
+		//d.set_primed(true);
+		_im_primed = false;
+		_shooting_duration = 100;
+		_number_of_shots = 1;
+	}
+}
+
+void Arrows::update(uint32_t dt)
+{
+	if (_playing) {
+		_time_since_played += dt;
+		if (_time_since_played >= _number_of_bullets_shot * (_shooting_duration / _number_of_shots < 2 ? 1 : (_number_of_shots - 1))) {
+			_bullets_properties.dir = ((*_aim_vec) - (*_pl_vec)).normalize();
+			_bullets_properties.init_pos = *_pl_vec;
+			if (!_im_primed) {
+					
+				Vector2D dirOr = ((*_aim_vec) - (*_pl_vec)).normalize();
+				// 8 direcciones (cada 45 grados)
+				for (int i = 0; i < 8; ++i) {
+					float angle = i * (M_PI / 4.0f); // 0, 45, 90...
+					
+					// Vector2D dir(cos(angle), sin(angle)); // 8 direcciones
+					Vector2D dir = (dirOr + Vector2D(cos(angle), sin(angle))).normalize(); // Apuntadas
+
+					_bullets_properties.dir = dir;
+					Game::Instance()->get_currentScene()->create_proyectile(_bullets_properties, ecs::grp::BULLET);
+				}
+			}
+			else {
+				patrons::DiagonalShooting(_bullets_properties, ecs::grp::BULLET);
+			}
+			++_number_of_bullets_shot;
+			if (_number_of_bullets_shot == _number_of_shots)
+				_playing = false;
+		}
+	}
+}
+#pragma endregion
 
 #pragma region lighting
 Lighting::Lighting()
