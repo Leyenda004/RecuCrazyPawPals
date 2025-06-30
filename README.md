@@ -89,7 +89,7 @@ En un acogedor café de gatos en plena reforma, extrañas criaturas han aparecid
 El objetivo del juego es completar un número concreto de oleadas (10). Este sería el objetivo a largo plazo, así como mejorar tu mazo y personaje al final de cada oleada. A corto plazo, en cada oleada, el jugador debe sobrevivir y eliminar a todos los enemigos para pasar a la siguiente.  
 
 ### 2.2. Core loops  
-![Diagrama de flujo](https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/Diagrama%20de%20flujo.jpg)
+![Diagrama de flujo](https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/Diagrama%20de%20flujo.jpg)
 
 1. *Elección de personaje* (relacionado con arma y mazo de cartas).  
 2. *Oleada de enemigos*:  
@@ -153,24 +153,27 @@ El jugador colocará la carta de su mano en descartes sin consumir maná ni ejec
 **Nuestras cartas**
 <table style="margin: auto;">
   <tr>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/card_catkuza_info.png" alt="Catkuza_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/card_commune_info.png" alt="Commune_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/card_eldritch_blast_info.png" alt="Eldritch_Blast_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_catkuza_info.png" alt="Catkuza_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_commune_info.png" alt="Commune_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_eldritch_blast_info.png" alt="Eldritch_Blast_card" width="300"></td>
    </tr>
   <tr>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/card_evoke_info.png" alt="Evoke_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/card_fireball_info.png" alt="Fireball_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/card_fulgur_info.png" alt="Fulgur_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_evoke_info.png" alt="Evoke_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_fireball_info.png" alt="Fireball_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_fulgur_info.png" alt="Fulgur_card" width="300"></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/card_kunai_info.png" alt="Kunai_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/card_lighting_info.png" alt="Lighting_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/card_recover_info.png" alt="Recover_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_kunai_info.png" alt="Kunai_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_lighting_info.png" alt="Lighting_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_recover_info.png" alt="Recover_card" width="300"></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/card_minigun_info.png" alt="Minigun_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/card_quickfeet_info.png" alt="Quickfeet_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/card_spray_info.png" alt="card_spray_info" width="300"></td></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_minigun_info.png" alt="Minigun_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_quickfeet_info.png" alt="Quickfeet_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_spray_info.png" alt="card_spray_info" width="300"></td></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_arrows_info.png" alt="Minigun_card" width="300"></td>
   </tr>
 </table>
 
@@ -189,11 +192,11 @@ Si el arma tiene objetivo este será la retícula del jugador.
 **Nuestras armas**
 <table>
   <tr>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/pump_shotgun_b_info.png" alt="pump_shotgun_b_info" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/ramp_canon_b_info.png" alt="ramp_canon_b_info" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/pump_shotgun_b_info.png" alt="pump_shotgun_b_info" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/ramp_canon_b_info.png" alt="ramp_canon_b_info" width="300"></td>
    </tr>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/revolver_b_info.png" alt="Evoke_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/rampage_b_info.png" alt="rampage_b_info" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/revolver_b_info.png" alt="Evoke_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/rampage_b_info.png" alt="rampage_b_info" width="300"></td>
    </td>
   </tr>
 </table>
@@ -259,24 +262,27 @@ Algunos ejemplos de objetos míticos podrían ser:
 - **Nuestros Objetos Míticos**
 <table>
   <tr>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/mythic_blood_claw_info.png" alt="pump_shotgun_b_info" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/mythic_blood_pact_info.png" alt="ramp_canon_b_info" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/mythic_blood_claw_info.png" alt="pump_shotgun_b_info" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/mythic_blood_pact_info.png" alt="ramp_canon_b_info" width="300"></td>
    </tr>
   <tr>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/mythic_claw_file_info.png" alt="Evoke_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/mythic_demonic_scratcher_info.png" alt="rampage_b_info" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/mythic_claw_file_info.png" alt="Evoke_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/mythic_demonic_scratcher_info.png" alt="rampage_b_info" width="300"></td>
    </td>
     <tr>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/mythic_dream_recicler_info.png" alt="Evoke_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/mythic_incense_info.png" alt="rampage_b_info" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/mythic_dream_recicler_info.png" alt="Evoke_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/mythic_incense_info.png" alt="rampage_b_info" width="300"></td>
    </td>
     <tr>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/mythic_quick_draw_deck_info.png" alt="Evoke_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/mythic_uranium_socks_info.png" alt="rampage_b_info" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/mythic_quick_draw_deck_info.png" alt="Evoke_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/mythic_uranium_socks_info.png" alt="rampage_b_info" width="300"></td>
    </td>
    <tr>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/mythic_zoomies_inducer_info.png" alt="Evoke_card" width="300"></td>
-    <td><img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/mythic_curtain_reaper_info.png" alt="rampage_b_info" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/mythic_zoomies_inducer_info.png" alt="Evoke_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/mythic_curtain_reaper_info.png" alt="rampage_b_info" width="300"></td>
+   </td>
+   <tr>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/mythic_mana_lock_potion_info.png" alt="rampage_b_info" width="300"></td>
    </td>
   </tr>
 </table>
@@ -338,8 +344,8 @@ Tiene fijado al personaje en el centro y hace movimientos según el cursor, pero
 - **Menú de Fin de Juego**
     - Menú principal.
     - Salir del Juego.
-![Boceto HUD](https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/victory.png)
-![Boceto HUD](https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/gameover.png)
+![Boceto HUD](https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/victory.png)
+![Boceto HUD](https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/gameover.png)
 
 ### 4.5. Multijugador  
 - **Menú de Multijugador**
@@ -348,36 +354,36 @@ Tiene fijado al personaje en el centro y hace movimientos según el cursor, pero
     - Copiar ip cuando es host.
     - Escribir ip cuando es cliente.
     - Elegir skin.
-![Boceto HUD](https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/multiplayer_menu1.png)
-![Boceto HUD](https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/multiplayer_menu2.png)
+![Boceto HUD](https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/multiplayer_menu1.png)
+![Boceto HUD](https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/multiplayer_menu2.png)
 
 
 - **HUD Multijugador**
     - ID del jugador local.
     - Barra de vida de otros jugadores.
-![Boceto HUD](https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/multiplayer_hud.png)
+![Boceto HUD](https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/multiplayer_hud.png)
 
 ## 5. Mundo del juego  
 
 ### 5.1. Personajes  
 - **Personajes:** Gatos.
   
-  <img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/bocetoPersonaje1.png" alt="Boceto personaje1" width="100" />
-  <img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/bocetoPersonaje2.png" alt="Boceto personaje2" width="100" />
+  <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/bocetoPersonaje1.png" alt="Boceto personaje1" width="100" />
+  <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/bocetoPersonaje2.png" alt="Boceto personaje2" width="100" />
 
 - **Enemigos:**
 
 | Nombre | Imagen | Descripción |
 |--------|--------|-------------|
-| **SarnoRata**  | <img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/sarno_rata.png" alt="sarno_rata" width="100" /> | Se acerca al jugador y ataca en un área circular después de un breve retraso. El modo de seguimiento es aleatorio en el multijugador. |
-| **MichiMafioso**  | <img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/michi_mafioso.png" alt="michi_mafioso.png" width="100" /> | Se aleja y dispara un proyectil q apunta a la posición de hace un segundo del jugador al que tiene como objetivo. El modo de seguimiento es hacia el jugador más lejano en el multijugador. |
-| **PlimPlim**  | <img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/plim_plim.png" alt="plim_plim" width="100" /> | Dispara tres proyectiles en arco. El modo de seguimiento es hacia el jugador más cercano en el multijugador. |
-| **Boom**  | <img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/boom.png" alt="Boom" width="100" /> | Se acerca y explota. El modo de seguimiento es hacia el jugador con menos vida en el multijugador. |
-| **Ratatouille**  | <img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/ratatouille.png" alt="ratatouille" width="100" /> | Da vueltas alrededor del jugador, causando daño al chocar. El modo de seguimiento es aleatorio en el multijugador. |
-| **Basurero**  | <img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/basurero.png" alt="basurero" width="100" /> | Genera enemigos y, al tener poca vida, invoca al Rey del Basurero. No persigue a ningún jugador. |
-| **Rey del Basurero**  | <img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/rey_basurero.png" alt="rey_basurero" width="100" /> | Lanza bolsas de basura que ralentizan al jugador. El modo de seguimiento es aleatorio en el multijugador. |
-| **Jefe de la CatKuza**  | <img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/catkuza.png" alt="catkuza" width="100" /> | Patrones de ataque complejos. El modo de seguimiento es hacia el jugador con menos vida en el multijugador. |
-| **SuperMichiMafioso**  | <img src="https://github.com/UCM-FDI-DISIA/CrazyPawPals/blob/main/docs/img/super_michi_mafioso.png" alt="super_michi_mafioso" width="100" /> | Patrones de ataque en área y genera Michis Mafiosos. El modo de seguimiento es hacia el jugador con más vida en el multijugador. |
+| **SarnoRata**  | <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/sarno_rata.png" alt="sarno_rata" width="100" /> | Se acerca al jugador y ataca en un área circular después de un breve retraso. El modo de seguimiento es aleatorio en el multijugador. |
+| **MichiMafioso**  | <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/michi_mafioso.png" alt="michi_mafioso.png" width="100" /> | Se aleja y dispara un proyectil q apunta a la posición de hace un segundo del jugador al que tiene como objetivo. El modo de seguimiento es hacia el jugador más lejano en el multijugador. |
+| **PlimPlim**  | <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/plim_plim.png" alt="plim_plim" width="100" /> | Dispara tres proyectiles en arco. El modo de seguimiento es hacia el jugador más cercano en el multijugador. |
+| **Boom**  | <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/boom.png" alt="Boom" width="100" /> | Se acerca y explota. El modo de seguimiento es hacia el jugador con menos vida en el multijugador. |
+| **Ratatouille**  | <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/ratatouille.png" alt="ratatouille" width="100" /> | Da vueltas alrededor del jugador, causando daño al chocar. El modo de seguimiento es aleatorio en el multijugador. |
+| **Basurero**  | <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/basurero.png" alt="basurero" width="100" /> | Genera enemigos y, al tener poca vida, invoca al Rey del Basurero. No persigue a ningún jugador. |
+| **Rey del Basurero**  | <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/rey_basurero.png" alt="rey_basurero" width="100" /> | Lanza bolsas de basura que ralentizan al jugador. El modo de seguimiento es aleatorio en el multijugador. |
+| **Jefe de la CatKuza**  | <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/catkuza.png" alt="catkuza" width="100" /> | Patrones de ataque complejos. El modo de seguimiento es hacia el jugador con menos vida en el multijugador. |
+| **SuperMichiMafioso**  | <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/super_michi_mafioso.png" alt="super_michi_mafioso" width="100" /> | Patrones de ataque en área y genera Michis Mafiosos. El modo de seguimiento es hacia el jugador con más vida en el multijugador. |
 
 
 ### 5.2. Niveles  
