@@ -207,7 +207,7 @@ inline Card* create_card_from_type(PlayableCardType type) {
 		case PlayableCardType::Recover: return new Recover();
 		case PlayableCardType::CardSpray: return new CardSpray();
 		case PlayableCardType::EldritchBlast: return new EldritchBlast();
-		case PlayableCardType::Primordia: return new Primordia();
+		// case PlayableCardType::Primordia: return new Primordia();
 		case PlayableCardType::Commune: return new Commune();
 		case PlayableCardType::Evoke: return new Evoke();
 		case PlayableCardType::Fulgur: return new Fulgur();

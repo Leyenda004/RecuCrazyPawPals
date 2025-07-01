@@ -440,6 +440,10 @@
       "file": "resources/images/enviroment/selection.png"
     },
     {
+      "id": "selection_deck",
+      "file": "resources/images/enviroment/selection_deck.png"
+    },
+    {
       "id": "reward",
       "file": "resources/images/enviroment/reward.png"
     },

@@ -148,7 +148,7 @@ void CustomDeckSelectionScene::create_deck_buttons() {
 }
 
 void CustomDeckSelectionScene::initScene() {
-    create_static_background(&sdlutils().images().at("selection"));
+    create_static_background(&sdlutils().images().at("selection_deck"));
     create_weapon_info();
     create_weapon_buttons();
     create_enter_button();
@@ -645,9 +645,9 @@ void CustomDeckSelectionScene::update(uint32_t delta_time) {
 // Crea un botón por carta y las pone en el medio en dos columnas
 void CustomDeckSelectionScene::create_card_buttons() {
     float startX = 0.5f; // columna 1
-    float startY = 0.30f; // fila 1
-    float offsetX = 0.06f; // offset entre columnas
-    float offsetY = 0.09f; // offset entre filas
+    float startY = 0.35f; // fila 1
+    float offsetX = 0.07f; // offset entre columnas
+    float offsetY = 0.1f; // offset entre filas
     int nColumns = 3;
     int idx = 0;
 
@@ -660,15 +660,16 @@ void CustomDeckSelectionScene::create_card_buttons() {
     // Crear un botón para cada carta
     for (PlayableCardType cardType : all_card_types) {
         Card* card = create_card_from_type(cardType);
+        if (!card) continue;
         
         // POSICIÓN
-        float x = startX + (idx % nColumns) * offsetX; // columna (1/2)
+        float x = startX + (idx % nColumns) * offsetX; // columna
         float y = startY + (idx / nColumns) * offsetY; // fila
         ++idx;
 
         // BOTÓN DE LA CARTA
         GameStructs::ButtonProperties bp = {
-            { {x, y}, {0.045f, 0.075f} },
+            { {x, y}, {0.05f, 0.08f} },
             0.0f, card->get_name(), ecs::grp::UI
         };
         auto e = create_button(bp);
@@ -722,7 +723,7 @@ void CustomDeckSelectionScene::add_card_to_deck(Card* card) {
 // Crea un botón para eliminar la última carta del mazo
 void CustomDeckSelectionScene::create_remove_card_button() {
     GameStructs::ButtonProperties bp = {
-        { {0.5f, 0.88f}, {0.15f, 0.15f} },
+        { {0.525f, 0.83f}, {0.15f, 0.15f} },
         0.0f, "remove_card", ecs::grp::UI
     };
 
