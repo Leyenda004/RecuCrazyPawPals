@@ -644,7 +644,7 @@ void CustomDeckSelectionScene::update(uint32_t delta_time) {
 
 // Crea un botón por carta y las pone en el medio en dos columnas
 void CustomDeckSelectionScene::create_card_buttons() {
-    float startX = 0.5f; // columna 1
+    float startX = 0.48f; // columna 1
     float startY = 0.35f; // fila 1
     float offsetX = 0.07f; // offset entre columnas
     float offsetY = 0.1f; // offset entre filas
