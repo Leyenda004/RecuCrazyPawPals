@@ -337,7 +337,7 @@ Tiene fijado al personaje en el centro y hace movimientos según el cursor, pero
     - Escoger arma (pulsando izquierda o derecha).
     - Escoger mazo inicial (pulsando izquierda o derecha)
     - Comenzar.
-  <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/deck_selection.png" alt="Evoke_card" width="300">
+  <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/deck_selection0.png" alt="Evoke_card" width="300">
 
 - **Menú de objetos míticos**
     - Elegir entre tres objetos.
