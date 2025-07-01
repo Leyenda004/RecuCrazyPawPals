@@ -178,6 +178,7 @@ El jugador colocará la carta de su mano en descartes sin consumir maná ni ejec
   </tr>
   <tr>
     <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_arrows_info.png" alt="Minigun_card" width="300"></td>
+    <td><img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/card_boomerang_info.png" alt="Minigun_card" width="300"></td>
   </tr>
 </table>
 
