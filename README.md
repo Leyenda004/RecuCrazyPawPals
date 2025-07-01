@@ -207,7 +207,7 @@ Si el arma tiene objetivo este será la retícula del jugador.
 </table>
 
 ### 3.6. Oleadas  
-El juego dispondrá en total de 10 oleadas. La duración aproximada de cada una es de 1 minuto, y se terminan al eliminar a todos los enemigos aparecidos con esta. 
+El juego, en su modo clásico, dispondrá en total de 10 oleadas. La duración aproximada de cada una es de 1 minuto, y se terminan al eliminar a todos los enemigos aparecidos con esta.
 
 **Desarrollo de las oleadas**
 
@@ -218,7 +218,7 @@ La niebla hará daño poco a poco (8% de vida por segundo) al tocar al jugador. 
 
 **Fin de Oleada**
 
-Al finalizar una oleada, el mazo se recarga instantáneamente y  comienza un periodo entre oleadas de 3 segundos antes de pasar al menú de recompensas. En este el jugador tendrá una elección entre varias artas distintas. Y al seleccionar una comenzará la siguiente oleada.
+Al finalizar una oleada, el mazo se recarga instantáneamente y  comienza un periodo entre oleadas de 3 segundos antes de pasar al menú de recompensas. En este el jugador tendrá una elección entre varias cartas distintas. Y al seleccionar una, o saltar la elección, comenzará la siguiente oleada.
 
 **Eventos de Oleadas**
 
@@ -227,7 +227,7 @@ En algunas ocasiones las oleadas mostrarán antes de comenzar un sprite con un t
 
 ### 3.7. Recompensas  
 
-Al completar una oleada, aparecerá un menú de recompensas. Este menú mostrará varias opciones, cada una con una descripción que se revelará al pasar sobre ella. El jugador podrá elegir solo una de las recompensas disponibles. Al elegir cualquiera de las recompensas el resto se bloquearán. 
+Al completar una oleada, aparecerá un menú de recompensas. Este menú mostrará varias opciones, cada una con una descripción que se revelará al pasar sobre ella. El jugador podrá elegir solo una, o ninguna, de las recompensas disponibles. Al elegir cualquiera de las recompensas el resto se bloquearán. 
 
 **Distribución de recompensas**
 
@@ -335,8 +335,9 @@ Tiene fijado al personaje en el centro y hace movimientos según el cursor, pero
 
 - **Menú de personalización de mazo**
     - Escoger arma (pulsando izquierda o derecha).
-    - Escoger mazo inicial (pulsando izquierda o derecha)
-    - Comenzar.
+    - Se puede escoger un mazo por defecto
+    - Se puede editar una por una las cartas del mazo, pudiéndose escoger todas las que se desee
+    - Con el arma seleccionada, comenzar.
   <img src="https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/deck_selection0.png" alt="Evoke_card" width="300">
 
 - **Menú de objetos míticos**
@@ -353,6 +354,7 @@ Tiene fijado al personaje en el centro y hace movimientos según el cursor, pero
 
 
 - **Menú de Fin de Juego**
+    - En el modo Endless Run, contará con un recuento de las oleadas superadas y el récord de oleadas alcanzadas.
     - Menú principal.
     - Salir del Juego.
 ![Boceto HUD](https://github.com/Leyenda004/RecuCrazyPawPals/blob/main/docs/img/victory.png)
@@ -424,10 +426,11 @@ El juego comienza en el **menú principal**, donde el jugador puede:
 - Tutorial.
 - Salir del juego.
 
+
 Al seleccionar **"Jugar"**, se abre una pantalla donde el jugador elige su **arma** y **mazo inicial**. Una vez elegidos, el jugador pulsa **"Comenzar"** para iniciar la partida.
 
 
-*Inicio de la Partida*
+*Inicio de la Partida Clásica*
 
 El personaje del jugador aparece en el **campo de batalla** sin nada a su alrededor, un escenario temático que refleja el entorno del café de gatos. En la interfaz de usuario (HUD), se muestran:
 - **Carta en mano**: La primera carta del mazo, lista para ser usada.
@@ -468,6 +471,33 @@ En algunas oleadas, puede ocurrir un **evento especial** (por ejemplo, una olead
 Si el jugador pierde toda su salud, aparece un **menú de derrota** que tiene dos botones:
 - **Menú principal**: Regresa al menú inicial para seleccionar un nuevo mazo y arma.
 - **Salir**: Se cierra la aplicación.
+
+
+
+Al seleccionar **"Jugar Endless Run"**, se abre una pantalla donde el jugador elige su **arma** y puede modificar su **mazo inicial**. Una vez elegida el arma, el jugador pulsa **"Comenzar"** para iniciar la partida.
+
+No hay ningún cambio con respecto al modo clásico en:
+
+*Inicio de la Partida Endless Run*
+
+*Acciones del Jugador*
+
+*Combate y Estrategia*
+
+*Eventos Especiales*
+
+
+**Pero el fin de la oleada es distinta**
+
+*Fin de la Oleada*
+
+Una vez que todos los enemigos son derrotados, se suma 1 al número de rondas, y la ronda se reinicia, con enemigos de mayor dificultad. Por tanto, el jugador no obtiene recompensas de Cartas ni Objetos Míticos.
+
+
+
+*Derrota y Menú de Fin de Juego*
+
+Si el jugador pierde toda su salud, aparece el **menú de derrota**. Este será igual al del modo clásico, pero contará con un contador de las oleadas superadas, y otro que marca el record actual de oleadas superadas hasta el momento en la sesión.
 
 
 ## 7. Estética y contenido  
