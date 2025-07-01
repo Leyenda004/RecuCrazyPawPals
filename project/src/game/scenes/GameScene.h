@@ -58,8 +58,9 @@ public:
 	static ecs::entity_t generate_proyectile(const GameStructs::BulletProperties& bp, ecs::grpId_t gid, ecs::sceneId_t scene = ecs::scene::GAMESCENE);
 
 	ecs::entity_t create_proyectile(const GameStructs::BulletProperties& bp, ecs::grpId_t gid) override; //para la escena de tutorial
+	// Crear específicamente un boomerang, para poder devolver el puntero a su entidad
+	ecs::entity_t create_boomerang(const GameStructs::BulletProperties& bp) override;
 
-	//
 	void spawn_wave_manager();
 	void spawn_fog();
 	void event_callback0(const event_system::event_receiver::Msg& m) override;

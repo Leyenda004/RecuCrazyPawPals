@@ -1,4 +1,3 @@
-
 #include "PlayableCards.hpp"
 #include "CardUpgrade.hpp"
 #include "../components/movement/MovementController.h"
@@ -158,6 +157,55 @@ void Arrows::update(uint32_t dt)
 			if (_number_of_bullets_shot == _number_of_shots)
 				_playing = false;
 		}
+	}
+}
+#pragma endregion
+
+#pragma region boomerang
+Boomerang::Boomerang()
+	: Card("card_boomerang", Resources(2))
+{
+}
+
+void Boomerang::on_play(Deck& d, const Vector2D* player_position, const Vector2D* target_position)
+{
+
+	Card::on_play(d, player_position, target_position);
+	played = true;
+
+	_angle = 0.0f;
+	_radius = 0.0f;
+	_time_since_played = 0;
+
+	_bullets_properties.init_pos = *player_position;
+	
+	_bullets_properties.dir = ((*target_position) - (*player_position)).normalize();
+	_bullets_properties.speed = 0.5f;
+
+	_bullets_properties.height = 1.7f;
+	_bullets_properties.width = 2.2f;
+
+	_bullets_properties.life_time = 4.0f;
+	_bullets_properties.damage = 5;
+
+	_bullets_properties.sprite_key = "p_boomerang";
+	_bullets_properties.collision_filter = GameStructs::collide_with::enemy;
+
+	// Crear el boomerang y guardar su entidad
+	boomerang_ent = Game::Instance()->get_currentScene()->create_boomerang(_bullets_properties);
+	tr = Game::Instance()->get_mngr()->getComponent<Transform>(boomerang_ent);
+}
+
+void Boomerang::update(uint32_t dt)
+{
+	if (!played) return;
+
+	if (Game::Instance()->get_mngr()->isAlive(boomerang_ent) && tr != nullptr) {
+		_radius += _radius_speed * dt;
+		_angle += _angle_speed * dt;
+
+		Vector2D offset(_radius * cos(_angle), _radius * sin(_angle));		
+		tr->setPos(_bullets_properties.init_pos + offset);
 	}
 }
 #pragma endregion

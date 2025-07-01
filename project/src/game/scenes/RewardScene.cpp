@@ -174,6 +174,8 @@ std::string RewardScene::select_card(GameStructs::CardType ct) {
         break;
     case GameStructs::ARROWS: s = "card_arrows";
         break;
+    case GameStructs::BOOMERANG: s = "card_boomerang";
+        break;
     default:
         break;
     }
@@ -610,6 +612,9 @@ void RewardScene::add_new_reward_card() {
         break;
     case GameStructs::ARROWS:
         c = new Arrows();
+        break;
+    case GameStructs::BOOMERANG:
+        c = new Boomerang();
         break;
     case GameStructs::LIGHTING:
         c = new Lighting();

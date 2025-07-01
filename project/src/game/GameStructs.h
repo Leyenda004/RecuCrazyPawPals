@@ -131,6 +131,7 @@ namespace GameStructs
 		FULGUR,
 		QUICK_FEET,
 		ARROWS,
+		BOOMERANG,
 		LAST_CARD,
 	};
 	struct MythicButtonProperties : public ButtonProperties

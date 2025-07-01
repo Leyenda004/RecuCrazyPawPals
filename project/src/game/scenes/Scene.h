@@ -30,7 +30,8 @@ public:
 	virtual void update(uint32_t delta_time);
 	virtual void render();
 	virtual ecs::entity_t create_proyectile(const GameStructs::BulletProperties &bp, ecs::grpId_t gid) { return nullptr; };
-
+	// Crear específicamente un boomerang, para poder devolver el puntero a su entidad
+	virtual ecs::entity_t create_boomerang(const GameStructs::BulletProperties& bp) { return nullptr; };
 	template <typename... Cmps>
 	static ecs::entity_t create_entity(ecs::grpId_t gid, ecs::sceneId_t sid, Cmps... components)
 	{

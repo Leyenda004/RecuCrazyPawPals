@@ -150,6 +150,25 @@ private:
 	bool _im_primed = false;
 };
 
+class Boomerang : public Card {
+public:
+	Boomerang();
+	void on_play(Deck& d, const Vector2D* player_position, const Vector2D* target_position) override;
+	void update(uint32_t) override;
+private:
+	ecs::entity_t boomerang_ent;
+	Transform* tr;
+
+	GameStructs::BulletProperties _bullets_properties;
+	
+	float _angle = 0.0f;
+	float _angle_speed = 0.01f;  // velocidad angular
+	float _radius = 0.0f;
+	float _radius_speed = 0.003f; // velocidad de expansión de la espiral
+	bool played = false;
+	int _time_since_played = 0;
+};
+
 // The following cards exist for testing purposes and may not be playable in the finished product. These are subject to change.
 #pragma region TestCards
 class Prime : public Card {
@@ -174,6 +193,7 @@ enum class PlayableCardType {
 	QuickFeet,
 	CatKuzaCard,
 	Arrows,
+	Boomerang,
 	N_CARD_TYPES // Para saber cuántas hay
 };
 
@@ -194,6 +214,7 @@ inline Card* create_card_from_type(PlayableCardType type) {
 		case PlayableCardType::QuickFeet: return new QuickFeet();
 		case PlayableCardType::CatKuzaCard: return new CatKuzaCard();
 		case PlayableCardType::Arrows: return new Arrows();
+		case PlayableCardType::Boomerang: return new Boomerang();
 		default: return nullptr;
 	}
 }

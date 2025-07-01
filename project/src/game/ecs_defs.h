@@ -61,6 +61,7 @@
 //
 #define _GRPS_LIST_ \
 	BULLET, \
+	BOOMERANG, \
 	DECKBUTTON, \
 	DECKINFO, \
 	ENEMY, \

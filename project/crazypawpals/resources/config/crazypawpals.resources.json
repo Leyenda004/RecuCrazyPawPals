@@ -120,6 +120,10 @@
       "file": "resources/images/projectiles/p_card_arrows.png"
     },
     {
+      "id": "p_boomerang",
+      "file": "resources/images/projectiles/p_card_boomerang.png"
+    },
+    {
       "id": "p_lighting",
       "file": "resources/images/projectiles/p_card_lighting.png"
     },
@@ -206,6 +210,10 @@
     {
       "id": "card_arrows",
       "file": "resources/images/cards/card_arrows.png"
+    },
+    {
+      "id": "card_boomerang",
+      "file": "resources/images/cards/card_boomerang.png"
     },
     {
       "id": "card_minigun",
@@ -494,6 +502,10 @@
     {
       "id": "card_arrows_info",
       "file": "resources/images/ui/infos/card_arrows_info.png"
+    },
+    {
+      "id": "card_boomerang_info",
+      "file": "resources/images/ui/infos/card_boomerang_info.png"
     },
     {
       "id": "card_minigun_info",

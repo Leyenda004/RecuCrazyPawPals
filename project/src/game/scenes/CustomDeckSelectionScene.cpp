@@ -378,10 +378,10 @@ void CustomDeckSelectionScene::create_deck_button(GameStructs::DeckType dt, cons
             add_card_to_deck(new Minigun());
             break;
         case GameStructs::THREE:
-            add_card_to_deck(new Fulgur());
+            add_card_to_deck(new Boomerang());
             add_card_to_deck(new Fireball());
             add_card_to_deck(new Minigun());
-            add_card_to_deck(new Kunai());
+            add_card_to_deck(new Arrows());
             break;
         case GameStructs::FOUR:
             add_card_to_deck(new Kunai());
@@ -646,9 +646,9 @@ void CustomDeckSelectionScene::update(uint32_t delta_time) {
 void CustomDeckSelectionScene::create_card_buttons() {
     float startX = 0.5f; // columna 1
     float startY = 0.30f; // fila 1
-    float offsetX = 0.09f; // offset entre columnas
+    float offsetX = 0.06f; // offset entre columnas
     float offsetY = 0.09f; // offset entre filas
-    int nColumns = 2;
+    int nColumns = 3;
     int idx = 0;
 
     // Vector con todas las cartas en el enum PlayableCardType

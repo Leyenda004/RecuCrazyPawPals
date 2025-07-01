@@ -1508,6 +1508,41 @@ ecs::entity_t GameScene::create_proyectile(const GameStructs::BulletProperties &
 {
 	return generate_proyectile(bp, gid);
 }
+ecs::entity_t GameScene::create_boomerang(const GameStructs::BulletProperties &bp)
+{
+	auto manager = Game::Instance()->get_mngr();
+	ecs::grpId_t gid = ecs::grp::BOOMERANG;
+	(void)gid;
+
+	auto &&transform = *new Transform(bp.init_pos, bp.dir, (atan2(-bp.dir.getY(), bp.dir.getX()) + M_PI / 2) * 180.0f / M_PI, bp.speed);
+	auto &&rect = *new rect_component{0, 0, bp.width, bp.height};
+	auto &&player_rigidbody = *new rigidbody_component{rect_f32{{0.15f, -0.125}, {0.5f, 0.75f}}, mass_f32{7.0f}, 1.0f};
+	auto &&player_collisionable = *new collisionable{transform, player_rigidbody, rect, collisionable_option_trigger};
+	
+	auto e = create_entity(
+		gid,
+		ecs::scene::GAMESCENE,
+		&transform,
+		&rect,
+		new dyn_image(
+			rect_f32{{0, 0}, {1, 1}},
+			rect,
+			manager->getComponent<camera_component>(manager->getHandler(ecs::hdlr::CAMERA))->cam,
+			sdlutils().images().at(bp.sprite_key),
+			transform),
+		new LifetimeTimer(bp.life_time),
+		new BulletData(bp.damage, bp.weapon_type),
+		&player_rigidbody,
+		&player_collisionable,
+		new bullet_collision_component(bp));
+
+	// if (bp.bitset != nullptr)
+	// manager->addComponent<collision_registration_by_id>(e, bp.bitset);
+	// else
+	if (bp.collision_filter == GameStructs::collide_with::enemy || bp.collision_filter == GameStructs::collide_with::all)
+		manager->addComponent<collision_registration_by_id>(e, bp.bitset);
+	return e;
+}
 #pragma endregion
 
 void GameScene::event_callback0(const event_system::event_receiver::Msg &m)
